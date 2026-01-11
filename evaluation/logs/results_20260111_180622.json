@@ -1,0 +1,459 @@
+{
+  "metadata": {
+    "timestamp": "2026-01-11T18:06:22.973276",
+    "total_queries": 10,
+    "use_llm": true,
+    "vector_store": "./outputs/vectordb"
+  },
+  "summary": {
+    "passed": 0,
+    "failed": 10,
+    "pass_rate": 0.0,
+    "avg_retrieval_ms": 137.11,
+    "avg_generation_ms": 402.77,
+    "avg_total_ms": 539.88,
+    "avg_keyword_score": 0.033
+  },
+  "modality_breakdown": {
+    "text": {
+      "total": 3,
+      "passed": 0,
+      "pass_rate": 0.0,
+      "avg_latency_ms": 723.9699999999999,
+      "avg_keyword_score": 0.0
+    },
+    "table": {
+      "total": 3,
+      "passed": 0,
+      "pass_rate": 0.0,
+      "avg_latency_ms": 475.3666666666666,
+      "avg_keyword_score": 0.111
+    },
+    "figure": {
+      "total": 2,
+      "passed": 0,
+      "pass_rate": 0.0,
+      "avg_latency_ms": 447.025,
+      "avg_keyword_score": 0.0
+    },
+    "mixed": {
+      "total": 2,
+      "passed": 0,
+      "pass_rate": 0.0,
+      "avg_latency_ms": 453.395,
+      "avg_keyword_score": 0.0
+    }
+  },
+  "category_breakdown": {
+    "figure_lookup": {
+      "total": 2,
+      "passed": 0,
+      "pass_rate": 0.0
+    },
+    "summarization": {
+      "total": 1,
+      "passed": 0,
+      "pass_rate": 0.0
+    },
+    "cross_modal": {
+      "total": 1,
+      "passed": 0,
+      "pass_rate": 0.0
+    },
+    "analytical": {
+      "total": 2,
+      "passed": 0,
+      "pass_rate": 0.0
+    },
+    "table_lookup": {
+      "total": 3,
+      "passed": 0,
+      "pass_rate": 0.0
+    },
+    "factual": {
+      "total": 1,
+      "passed": 0,
+      "pass_rate": 0.0
+    }
+  },
+  "results": [
+    {
+      "query_id": "text_q1",
+      "query": "What is the GDP growth projection for Qatar?",
+      "category": "factual",
+      "expected_modality": "text",
+      "retrieval_time_ms": 200.43,
+      "generation_time_ms": 809.03,
+      "total_time_ms": 1009.46,
+      "retrieved_modalities": [
+        "table",
+        "figure",
+        "text",
+        "text",
+        "table"
+      ],
+      "num_chunks": 5,
+      "top_scores": [
+        0.0317,
+        0.029,
+        0.0164
+      ],
+      "answer": "Error generating response: 429 You exceeded your current quota, please check your plan and billing details. For more information on this error, head to: https://ai.google.dev/gemini-api/docs/rate-limits. To monitor your current usage, head to: https://ai.dev/rate-limit. \n* Quota exceeded for metric: generativelanguage.googleapis.com/generate_content_free_tier_requests, limit: 20, model: gemini-2.5-flash\nPlease retry in 36.56340071s. [links {\n  description: \"Learn more about Gemini API quotas\"\n  ",
+      "citations": [
+        "Page 42: TABLE",
+        "Page 8: FIGURE",
+        "Page 39: TEXT"
+      ],
+      "modality_match": true,
+      "keyword_score": 0.0,
+      "keywords_found": [],
+      "keywords_missing": [
+        "GDP",
+        "growth",
+        "percent",
+        "%"
+      ],
+      "passed": false
+    },
+    {
+      "query_id": "text_q2",
+      "query": "What are the main drivers of economic growth?",
+      "category": "analytical",
+      "expected_modality": "text",
+      "retrieval_time_ms": 169.61,
+      "generation_time_ms": 381.3,
+      "total_time_ms": 550.91,
+      "retrieved_modalities": [
+        "text",
+        "figure",
+        "text",
+        "text",
+        "table"
+      ],
+      "num_chunks": 5,
+      "top_scores": [
+        0.0315,
+        0.0281,
+        0.0164
+      ],
+      "answer": "Error generating response: 429 You exceeded your current quota, please check your plan and billing details. For more information on this error, head to: https://ai.google.dev/gemini-api/docs/rate-limits. To monitor your current usage, head to: https://ai.dev/rate-limit. \n* Quota exceeded for metric: generativelanguage.googleapis.com/generate_content_free_tier_requests, limit: 20, model: gemini-2.5-flash\nPlease retry in 36.061791871s. [links {\n  description: \"Learn more about Gemini API quotas\"\n ",
+      "citations": [
+        "Page 5: TEXT",
+        "Page 8: FIGURE",
+        "Page 8: TEXT"
+      ],
+      "modality_match": true,
+      "keyword_score": 0.0,
+      "keywords_found": [],
+      "keywords_missing": [
+        "hydrocarbon",
+        "energy",
+        "investment",
+        "construction"
+      ],
+      "passed": false
+    },
+    {
+      "query_id": "text_q3",
+      "query": "What fiscal policy recommendations are mentioned?",
+      "category": "analytical",
+      "expected_modality": "text",
+      "retrieval_time_ms": 179.43,
+      "generation_time_ms": 432.11,
+      "total_time_ms": 611.54,
+      "retrieved_modalities": [
+        "text",
+        "text",
+        "text",
+        "text",
+        "text"
+      ],
+      "num_chunks": 5,
+      "top_scores": [
+        0.0325,
+        0.0325,
+        0.0308
+      ],
+      "answer": "Error generating response: 429 You exceeded your current quota, please check your plan and billing details. For more information on this error, head to: https://ai.google.dev/gemini-api/docs/rate-limits. To monitor your current usage, head to: https://ai.dev/rate-limit. \n* Quota exceeded for metric: generativelanguage.googleapis.com/generate_content_free_tier_requests, limit: 20, model: gemini-2.5-flash\nPlease retry in 35.505620103s. [links {\n  description: \"Learn more about Gemini API quotas\"\n ",
+      "citations": [
+        "Page 14: TEXT",
+        "Page 5: TEXT",
+        "Page 6: TEXT"
+      ],
+      "modality_match": true,
+      "keyword_score": 0.0,
+      "keywords_found": [],
+      "keywords_missing": [
+        "fiscal",
+        "policy",
+        "budget",
+        "spending",
+        "revenue"
+      ],
+      "passed": false
+    },
+    {
+      "query_id": "table_q1",
+      "query": "Show me Table 1",
+      "category": "table_lookup",
+      "expected_modality": "table",
+      "retrieval_time_ms": 46.36,
+      "generation_time_ms": 364.04,
+      "total_time_ms": 410.4,
+      "retrieved_modalities": [
+        "text",
+        "table",
+        "text",
+        "table",
+        "text"
+      ],
+      "num_chunks": 5,
+      "top_scores": [
+        0.0164,
+        0.0164,
+        0.0161
+      ],
+      "answer": "Error generating response: 429 You exceeded your current quota, please check your plan and billing details. For more information on this error, head to: https://ai.google.dev/gemini-api/docs/rate-limits. To monitor your current usage, head to: https://ai.dev/rate-limit. \n* Quota exceeded for metric: generativelanguage.googleapis.com/generate_content_free_tier_requests, limit: 20, model: gemini-2.5-flash\nPlease retry in 35.033284694s. [links {\n  description: \"Learn more about Gemini API quotas\"\n ",
+      "citations": [
+        "Page 6: TEXT",
+        "Page 5: TABLE",
+        "Page 10: TEXT"
+      ],
+      "modality_match": true,
+      "keyword_score": 0.0,
+      "keywords_found": [],
+      "keywords_missing": [
+        "table",
+        "data"
+      ],
+      "passed": false
+    },
+    {
+      "query_id": "table_q2",
+      "query": "What are the values in the economic indicators table?",
+      "category": "table_lookup",
+      "expected_modality": "table",
+      "retrieval_time_ms": 173.8,
+      "generation_time_ms": 314.79,
+      "total_time_ms": 488.6,
+      "retrieved_modalities": [
+        "text",
+        "table",
+        "table",
+        "text",
+        "text"
+      ],
+      "num_chunks": 5,
+      "top_scores": [
+        0.0164,
+        0.0164,
+        0.0164
+      ],
+      "answer": "Error generating response: 429 You exceeded your current quota, please check your plan and billing details. For more information on this error, head to: https://ai.google.dev/gemini-api/docs/rate-limits. To monitor your current usage, head to: https://ai.dev/rate-limit. \n* Quota exceeded for metric: generativelanguage.googleapis.com/generate_content_free_tier_requests, limit: 20, model: gemini-2.5-flash\nPlease retry in 34.489783132s. [links {\n  description: \"Learn more about Gemini API quotas\"\n ",
+      "citations": [
+        "Page 39: TEXT",
+        "Page 39: TABLE",
+        "Page 5: TABLE"
+      ],
+      "modality_match": true,
+      "keyword_score": 0.333,
+      "keywords_found": [
+        "value"
+      ],
+      "keywords_missing": [
+        "indicator",
+        "percent"
+      ],
+      "passed": false
+    },
+    {
+      "query_id": "table_q3",
+      "query": "Show fiscal balance data from the tables",
+      "category": "table_lookup",
+      "expected_modality": "table",
+      "retrieval_time_ms": 165.25,
+      "generation_time_ms": 361.86,
+      "total_time_ms": 527.1,
+      "retrieved_modalities": [
+        "table",
+        "table",
+        "table",
+        "text",
+        "text"
+      ],
+      "num_chunks": 5,
+      "top_scores": [
+        0.0302,
+        0.0299,
+        0.0284
+      ],
+      "answer": "Error generating response: 429 You exceeded your current quota, please check your plan and billing details. For more information on this error, head to: https://ai.google.dev/gemini-api/docs/rate-limits. To monitor your current usage, head to: https://ai.dev/rate-limit. \n* Quota exceeded for metric: generativelanguage.googleapis.com/generate_content_free_tier_requests, limit: 20, model: gemini-2.5-flash\nPlease retry in 34.007058043s. [links {\n  description: \"Learn more about Gemini API quotas\"\n ",
+      "citations": [
+        "Page 8: TABLE",
+        "Page 42: TABLE",
+        "Page 14: TABLE"
+      ],
+      "modality_match": true,
+      "keyword_score": 0.0,
+      "keywords_found": [],
+      "keywords_missing": [
+        "fiscal",
+        "balance",
+        "budget"
+      ],
+      "passed": false
+    },
+    {
+      "query_id": "figure_q1",
+      "query": "What does Figure 1 show?",
+      "category": "figure_lookup",
+      "expected_modality": "figure",
+      "retrieval_time_ms": 42.32,
+      "generation_time_ms": 362.8,
+      "total_time_ms": 405.12,
+      "retrieved_modalities": [
+        "text",
+        "figure",
+        "text",
+        "figure",
+        "text"
+      ],
+      "num_chunks": 5,
+      "top_scores": [
+        0.0164,
+        0.0164,
+        0.0161
+      ],
+      "answer": "Error generating response: 429 You exceeded your current quota, please check your plan and billing details. For more information on this error, head to: https://ai.google.dev/gemini-api/docs/rate-limits. To monitor your current usage, head to: https://ai.dev/rate-limit. \n* Quota exceeded for metric: generativelanguage.googleapis.com/generate_content_free_tier_requests, limit: 20, model: gemini-2.5-flash\nPlease retry in 33.610585655s. [links {\n  description: \"Learn more about Gemini API quotas\"\n ",
+      "citations": [
+        "Page 6: TEXT",
+        "Page 5: FIGURE",
+        "Page 8: TEXT"
+      ],
+      "modality_match": true,
+      "keyword_score": 0.0,
+      "keywords_found": [],
+      "keywords_missing": [
+        "figure",
+        "chart",
+        "graph",
+        "shows"
+      ],
+      "passed": false
+    },
+    {
+      "query_id": "figure_q2",
+      "query": "Describe the GDP trend chart",
+      "category": "figure_lookup",
+      "expected_modality": "figure",
+      "retrieval_time_ms": 166.99,
+      "generation_time_ms": 321.94,
+      "total_time_ms": 488.93,
+      "retrieved_modalities": [
+        "figure",
+        "figure",
+        "text",
+        "text",
+        "figure"
+      ],
+      "num_chunks": 5,
+      "top_scores": [
+        0.0323,
+        0.0317,
+        0.0164
+      ],
+      "answer": "Error generating response: 429 You exceeded your current quota, please check your plan and billing details. For more information on this error, head to: https://ai.google.dev/gemini-api/docs/rate-limits. To monitor your current usage, head to: https://ai.dev/rate-limit. \n* Quota exceeded for metric: generativelanguage.googleapis.com/generate_content_free_tier_requests, limit: 20, model: gemini-2.5-flash\nPlease retry in 33.070573358s. [links {\n  description: \"Learn more about Gemini API quotas\"\n ",
+      "citations": [
+        "Page 8: FIGURE",
+        "Page 8: FIGURE",
+        "Page 39: TEXT"
+      ],
+      "modality_match": true,
+      "keyword_score": 0.0,
+      "keywords_found": [],
+      "keywords_missing": [
+        "GDP",
+        "trend",
+        "chart",
+        "growth"
+      ],
+      "passed": false
+    },
+    {
+      "query_id": "mixed_q1",
+      "query": "Compare GDP projections mentioned in text with those in Table 1",
+      "category": "cross_modal",
+      "expected_modality": "mixed",
+      "retrieval_time_ms": 70.57,
+      "generation_time_ms": 355.5,
+      "total_time_ms": 426.07,
+      "retrieved_modalities": [
+        "text",
+        "table",
+        "text",
+        "table",
+        "text"
+      ],
+      "num_chunks": 5,
+      "top_scores": [
+        0.0164,
+        0.0164,
+        0.0161
+      ],
+      "answer": "Error generating response: 429 You exceeded your current quota, please check your plan and billing details. For more information on this error, head to: https://ai.google.dev/gemini-api/docs/rate-limits. To monitor your current usage, head to: https://ai.dev/rate-limit. \n* Quota exceeded for metric: generativelanguage.googleapis.com/generate_content_free_tier_requests, limit: 20, model: gemini-2.5-flash\nPlease retry in 32.666868625s. [links {\n  description: \"Learn more about Gemini API quotas\"\n ",
+      "citations": [
+        "Page 9: TEXT",
+        "Page 5: TABLE",
+        "Page 10: TEXT"
+      ],
+      "modality_match": true,
+      "keyword_score": 0.0,
+      "keywords_found": [],
+      "keywords_missing": [
+        "GDP",
+        "projection",
+        "table",
+        "percent"
+      ],
+      "passed": false
+    },
+    {
+      "query_id": "mixed_q2",
+      "query": "Summarize the key economic outlook from text and figures",
+      "category": "summarization",
+      "expected_modality": "mixed",
+      "retrieval_time_ms": 156.35,
+      "generation_time_ms": 324.36,
+      "total_time_ms": 480.72,
+      "retrieved_modalities": [
+        "text",
+        "text",
+        "figure",
+        "text",
+        "text"
+      ],
+      "num_chunks": 5,
+      "top_scores": [
+        0.0164,
+        0.0164,
+        0.0164
+      ],
+      "answer": "Error generating response: 429 You exceeded your current quota, please check your plan and billing details. For more information on this error, head to: https://ai.google.dev/gemini-api/docs/rate-limits. To monitor your current usage, head to: https://ai.dev/rate-limit. \n* Quota exceeded for metric: generativelanguage.googleapis.com/generate_content_free_tier_requests, limit: 20, model: gemini-2.5-flash\nPlease retry in 32.159642739s. [links {\n  description: \"Learn more about Gemini API quotas\"\n ",
+      "citations": [
+        "Page 9: TEXT",
+        "Page 13: TEXT",
+        "Page 5: FIGURE"
+      ],
+      "modality_match": true,
+      "keyword_score": 0.0,
+      "keywords_found": [],
+      "keywords_missing": [
+        "economic",
+        "outlook",
+        "growth",
+        "forecast"
+      ],
+      "passed": false
+    }
+  ]
+}

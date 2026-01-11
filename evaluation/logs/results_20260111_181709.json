@@ -1,0 +1,463 @@
+{
+  "metadata": {
+    "timestamp": "2026-01-11T18:17:09.717259",
+    "total_queries": 10,
+    "use_llm": true,
+    "vector_store": "./outputs/vectordb"
+  },
+  "summary": {
+    "passed": 6,
+    "failed": 4,
+    "pass_rate": 0.6,
+    "avg_retrieval_ms": 102.48,
+    "avg_generation_ms": 2788.11,
+    "avg_total_ms": 2890.59,
+    "avg_keyword_score": 0.422
+  },
+  "modality_breakdown": {
+    "text": {
+      "total": 3,
+      "passed": 3,
+      "pass_rate": 1.0,
+      "avg_latency_ms": 3776.93,
+      "avg_keyword_score": 0.6833333333333332
+    },
+    "table": {
+      "total": 3,
+      "passed": 3,
+      "pass_rate": 1.0,
+      "avg_latency_ms": 5285.7266666666665,
+      "avg_keyword_score": 0.7223333333333333
+    },
+    "figure": {
+      "total": 2,
+      "passed": 0,
+      "pass_rate": 0.0,
+      "avg_latency_ms": 438.38,
+      "avg_keyword_score": 0.0
+    },
+    "mixed": {
+      "total": 2,
+      "passed": 0,
+      "pass_rate": 0.0,
+      "avg_latency_ms": 420.575,
+      "avg_keyword_score": 0.0
+    }
+  },
+  "category_breakdown": {
+    "figure_lookup": {
+      "total": 2,
+      "passed": 0,
+      "pass_rate": 0.0
+    },
+    "cross_modal": {
+      "total": 1,
+      "passed": 0,
+      "pass_rate": 0.0
+    },
+    "summarization": {
+      "total": 1,
+      "passed": 0,
+      "pass_rate": 0.0
+    },
+    "analytical": {
+      "total": 2,
+      "passed": 2,
+      "pass_rate": 1.0
+    },
+    "table_lookup": {
+      "total": 3,
+      "passed": 3,
+      "pass_rate": 1.0
+    },
+    "factual": {
+      "total": 1,
+      "passed": 1,
+      "pass_rate": 1.0
+    }
+  },
+  "results": [
+    {
+      "query_id": "text_q1",
+      "query": "What is the GDP growth projection for Qatar?",
+      "category": "factual",
+      "expected_modality": "text",
+      "retrieval_time_ms": 201.31,
+      "generation_time_ms": 3390.51,
+      "total_time_ms": 3591.82,
+      "retrieved_modalities": [
+        "table",
+        "figure",
+        "text",
+        "text",
+        "table"
+      ],
+      "num_chunks": 5,
+      "top_scores": [
+        0.0317,
+        0.029,
+        0.0164
+      ],
+      "answer": "Real GDP growth for Qatar is projected to improve to 2 percent in 2024–25. Over the medium term, growth is expected to accelerate to an average of around 4¾ percent [3].",
+      "citations": [
+        "Page 42: TABLE",
+        "Page 8: FIGURE",
+        "Page 39: TEXT"
+      ],
+      "modality_match": true,
+      "keyword_score": 0.75,
+      "keywords_found": [
+        "GDP",
+        "growth",
+        "percent"
+      ],
+      "keywords_missing": [
+        "%"
+      ],
+      "passed": true
+    },
+    {
+      "query_id": "text_q2",
+      "query": "What are the main drivers of economic growth?",
+      "category": "analytical",
+      "expected_modality": "text",
+      "retrieval_time_ms": 64.74,
+      "generation_time_ms": 3992.0,
+      "total_time_ms": 4056.74,
+      "retrieved_modalities": [
+        "text",
+        "figure",
+        "text",
+        "text",
+        "table"
+      ],
+      "num_chunks": 5,
+      "top_scores": [
+        0.0315,
+        0.0281,
+        0.0164
+      ],
+      "answer": "Qatar's non-hydrocarbon economy has grown, accounting for about two-thirds of the total output, primarily driven by significant public infrastructure investment over the last decade [1]. The Third National Development Strategy (NDS3) is guiding a new course for economic transformation [1]. While the state-driven growth model has been costly, more durable growth is expected to come from the private sector [2].",
+      "citations": [
+        "Page 5: TEXT",
+        "Page 8: FIGURE",
+        "Page 8: TEXT"
+      ],
+      "modality_match": true,
+      "keyword_score": 0.5,
+      "keywords_found": [
+        "hydrocarbon",
+        "investment"
+      ],
+      "keywords_missing": [
+        "energy",
+        "construction"
+      ],
+      "passed": true
+    },
+    {
+      "query_id": "text_q3",
+      "query": "What fiscal policy recommendations are mentioned?",
+      "category": "analytical",
+      "expected_modality": "text",
+      "retrieval_time_ms": 73.91,
+      "generation_time_ms": 3608.33,
+      "total_time_ms": 3682.23,
+      "retrieved_modalities": [
+        "text",
+        "text",
+        "text",
+        "text",
+        "text"
+      ],
+      "num_chunks": 5,
+      "top_scores": [
+        0.0325,
+        0.0325,
+        0.0308
+      ],
+      "answer": "Fiscal policy recommendations include sustaining fiscal discipline and accelerating revenue, expenditure, and fiscal institutional reforms [0]. Specific recommendations involve accelerating revenue diversification, such as introducing a value-added tax and broadening the corporate income tax [1]. It is also recommended to enhance spending efficiency, gradually align domestic energy prices with export prices, and reorient spending to support private sector-driven growth [1]. Adopting a full-fledg",
+      "citations": [
+        "Page 14: TEXT",
+        "Page 5: TEXT",
+        "Page 6: TEXT"
+      ],
+      "modality_match": true,
+      "keyword_score": 0.8,
+      "keywords_found": [
+        "fiscal",
+        "policy",
+        "spending",
+        "revenue"
+      ],
+      "keywords_missing": [
+        "budget"
+      ],
+      "passed": true
+    },
+    {
+      "query_id": "table_q1",
+      "query": "Show me Table 1",
+      "category": "table_lookup",
+      "expected_modality": "table",
+      "retrieval_time_ms": 16.95,
+      "generation_time_ms": 3246.75,
+      "total_time_ms": 3263.69,
+      "retrieved_modalities": [
+        "text",
+        "table",
+        "text",
+        "table",
+        "text"
+      ],
+      "num_chunks": 5,
+      "top_scores": [
+        0.0164,
+        0.0164,
+        0.0161
+      ],
+      "answer": "The provided documents indicate that \"Table 1. selected macroeconomic indicators, 2020-29\" is available on page 35 [0]. However, the actual content of Table 1 is not provided in the given context.",
+      "citations": [
+        "Page 6: TEXT",
+        "Page 5: TABLE",
+        "Page 10: TEXT"
+      ],
+      "modality_match": true,
+      "keyword_score": 0.5,
+      "keywords_found": [
+        "table"
+      ],
+      "keywords_missing": [
+        "data"
+      ],
+      "passed": true
+    },
+    {
+      "query_id": "table_q2",
+      "query": "What are the values in the economic indicators table?",
+      "category": "table_lookup",
+      "expected_modality": "table",
+      "retrieval_time_ms": 64.96,
+      "generation_time_ms": 9527.94,
+      "total_time_ms": 9592.89,
+      "retrieved_modalities": [
+        "text",
+        "table",
+        "table",
+        "text",
+        "text"
+      ],
+      "num_chunks": 5,
+      "top_scores": [
+        0.0164,
+        0.0164,
+        0.0164
+      ],
+      "answer": "The economic indicators table, titled \"table 1. qatar: selected macroeconomic indicators, 2020-29\" [1], provides the following values for the years 2020 through 2029:\n\n**National Account (percent change unless otherwise noted):**\n*   **Nominal GDP (billions of Qatari riyals):** 525.7, 654.2, 858.0, 775.3, 813.6, 828.9, 882.7, 955.7, 998.0, 1027.4 [1]\n*   **Nominal Hydrocarbon GDP (billions of Qatari riyals):** 152.3, 240.8, 380.3, 304.5, 317.0, 296.7, 315.0, 355.9, 367.3, 364.5 [1]\n*   **Nominal",
+      "citations": [
+        "Page 39: TEXT",
+        "Page 39: TABLE",
+        "Page 5: TABLE"
+      ],
+      "modality_match": true,
+      "keyword_score": 1.0,
+      "keywords_found": [
+        "indicator",
+        "value",
+        "percent"
+      ],
+      "keywords_missing": [],
+      "passed": true
+    },
+    {
+      "query_id": "table_q3",
+      "query": "Show fiscal balance data from the tables",
+      "category": "table_lookup",
+      "expected_modality": "table",
+      "retrieval_time_ms": 184.6,
+      "generation_time_ms": 2816.0,
+      "total_time_ms": 3000.6,
+      "retrieved_modalities": [
+        "table",
+        "table",
+        "table",
+        "text",
+        "text"
+      ],
+      "num_chunks": 5,
+      "top_scores": [
+        0.0302,
+        0.0299,
+        0.0284
+      ],
+      "answer": "The primary fiscal balance data is 0.2, 2.0, 11.7, 7.0, 1.6, 3.7, 5.9, 5.8, 5.4, 5.7 [1]. The central government fiscal balance data is -2.1, 0.2, 10.4, 5.6, 0.3, 2.5, 4.7, 4.7, 4.4, 4.6 [3].",
+      "citations": [
+        "Page 8: TABLE",
+        "Page 42: TABLE",
+        "Page 14: TABLE"
+      ],
+      "modality_match": true,
+      "keyword_score": 0.667,
+      "keywords_found": [
+        "fiscal",
+        "balance"
+      ],
+      "keywords_missing": [
+        "budget"
+      ],
+      "passed": true
+    },
+    {
+      "query_id": "figure_q1",
+      "query": "What does Figure 1 show?",
+      "category": "figure_lookup",
+      "expected_modality": "figure",
+      "retrieval_time_ms": 59.34,
+      "generation_time_ms": 325.26,
+      "total_time_ms": 384.6,
+      "retrieved_modalities": [
+        "text",
+        "figure",
+        "text",
+        "figure",
+        "text"
+      ],
+      "num_chunks": 5,
+      "top_scores": [
+        0.0164,
+        0.0164,
+        0.0161
+      ],
+      "answer": "Error generating response: 429 You exceeded your current quota, please check your plan and billing details. For more information on this error, head to: https://ai.google.dev/gemini-api/docs/rate-limits. To monitor your current usage, head to: https://ai.dev/rate-limit. \n* Quota exceeded for metric: generativelanguage.googleapis.com/generate_content_free_tier_requests, limit: 5, model: gemini-2.5-flash\nPlease retry in 46.72956206s. [links {\n  description: \"Learn more about Gemini API quotas\"\n  u",
+      "citations": [
+        "Page 6: TEXT",
+        "Page 5: FIGURE",
+        "Page 8: TEXT"
+      ],
+      "modality_match": true,
+      "keyword_score": 0.0,
+      "keywords_found": [],
+      "keywords_missing": [
+        "figure",
+        "sector",
+        "real",
+        "development"
+      ],
+      "passed": false
+    },
+    {
+      "query_id": "figure_q2",
+      "query": "Describe the GDP trend chart",
+      "category": "figure_lookup",
+      "expected_modality": "figure",
+      "retrieval_time_ms": 166.4,
+      "generation_time_ms": 325.76,
+      "total_time_ms": 492.16,
+      "retrieved_modalities": [
+        "figure",
+        "figure",
+        "text",
+        "text",
+        "figure"
+      ],
+      "num_chunks": 5,
+      "top_scores": [
+        0.0323,
+        0.0317,
+        0.0164
+      ],
+      "answer": "Error generating response: 429 You exceeded your current quota, please check your plan and billing details. For more information on this error, head to: https://ai.google.dev/gemini-api/docs/rate-limits. To monitor your current usage, head to: https://ai.dev/rate-limit. \n* Quota exceeded for metric: generativelanguage.googleapis.com/generate_content_free_tier_requests, limit: 5, model: gemini-2.5-flash\nPlease retry in 46.24274739s. [links {\n  description: \"Learn more about Gemini API quotas\"\n  u",
+      "citations": [
+        "Page 8: FIGURE",
+        "Page 8: FIGURE",
+        "Page 39: TEXT"
+      ],
+      "modality_match": true,
+      "keyword_score": 0.0,
+      "keywords_found": [],
+      "keywords_missing": [
+        "GDP",
+        "real",
+        "growth",
+        "percent"
+      ],
+      "passed": false
+    },
+    {
+      "query_id": "mixed_q1",
+      "query": "Compare GDP projections mentioned in text with those in Table 1",
+      "category": "cross_modal",
+      "expected_modality": "mixed",
+      "retrieval_time_ms": 44.64,
+      "generation_time_ms": 331.48,
+      "total_time_ms": 376.12,
+      "retrieved_modalities": [
+        "text",
+        "table",
+        "text",
+        "table",
+        "text"
+      ],
+      "num_chunks": 5,
+      "top_scores": [
+        0.0164,
+        0.0164,
+        0.0161
+      ],
+      "answer": "Error generating response: 429 You exceeded your current quota, please check your plan and billing details. For more information on this error, head to: https://ai.google.dev/gemini-api/docs/rate-limits. To monitor your current usage, head to: https://ai.dev/rate-limit. \n* Quota exceeded for metric: generativelanguage.googleapis.com/generate_content_free_tier_requests, limit: 5, model: gemini-2.5-flash\nPlease retry in 45.86080428s. [links {\n  description: \"Learn more about Gemini API quotas\"\n  u",
+      "citations": [
+        "Page 9: TEXT",
+        "Page 5: TABLE",
+        "Page 10: TEXT"
+      ],
+      "modality_match": true,
+      "keyword_score": 0.0,
+      "keywords_found": [],
+      "keywords_missing": [
+        "GDP",
+        "projection",
+        "table",
+        "percent"
+      ],
+      "passed": false
+    },
+    {
+      "query_id": "mixed_q2",
+      "query": "Summarize the key economic outlook from text and figures",
+      "category": "summarization",
+      "expected_modality": "mixed",
+      "retrieval_time_ms": 147.92,
+      "generation_time_ms": 317.12,
+      "total_time_ms": 465.03,
+      "retrieved_modalities": [
+        "text",
+        "text",
+        "figure",
+        "text",
+        "text"
+      ],
+      "num_chunks": 5,
+      "top_scores": [
+        0.0164,
+        0.0164,
+        0.0164
+      ],
+      "answer": "Error generating response: 429 You exceeded your current quota, please check your plan and billing details. For more information on this error, head to: https://ai.google.dev/gemini-api/docs/rate-limits. To monitor your current usage, head to: https://ai.dev/rate-limit. \n* Quota exceeded for metric: generativelanguage.googleapis.com/generate_content_free_tier_requests, limit: 5, model: gemini-2.5-flash\nPlease retry in 45.389700596s. [links {\n  description: \"Learn more about Gemini API quotas\"\n  ",
+      "citations": [
+        "Page 9: TEXT",
+        "Page 13: TEXT",
+        "Page 5: FIGURE"
+      ],
+      "modality_match": true,
+      "keyword_score": 0.0,
+      "keywords_found": [],
+      "keywords_missing": [
+        "economic",
+        "outlook",
+        "growth",
+        "forecast"
+      ],
+      "passed": false
+    }
+  ]
+}

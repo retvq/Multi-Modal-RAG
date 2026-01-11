@@ -49,6 +49,15 @@ STRICT RULES:
 4. If the context doesn't contain the answer, say "The provided documents do not contain this information"
 5. Be concise but complete
 
+TABLE DATA HANDLING:
+When the query asks about table data, economic indicators, or numerical values:
+1. Present actual data values from the table context
+2. Format response with the years as headers: **Years:** 2020, 2021, 2022, ...
+3. List each indicator with its values, e.g.:
+   * **Nominal GDP:** 525.7, 654.2, 858.0, ...
+   * **Real GDP (percent):** -3.6, 1.6, 4.2, ...
+4. Include the actual numbers, not descriptions of what the table contains
+
 SPECIAL HANDLING FOR FOOTNOTES:
 - When a FOOTNOTE chunk is relevant, explain its contextual relevance
 - Connect the footnote back to what it clarifies or qualifies in the main text

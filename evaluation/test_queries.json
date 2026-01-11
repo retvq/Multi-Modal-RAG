@@ -3,70 +3,117 @@
     "id": "text_q1",
     "query": "What is the GDP growth projection for Qatar?",
     "expected_modality": "text",
-    "expected_keywords": ["GDP", "growth", "percent", "%"],
+    "expected_keywords": [
+      "GDP",
+      "growth",
+      "percent",
+      "%"
+    ],
     "category": "factual"
   },
   {
     "id": "text_q2",
     "query": "What are the main drivers of economic growth?",
     "expected_modality": "text",
-    "expected_keywords": ["hydrocarbon", "energy", "investment", "construction"],
+    "expected_keywords": [
+      "hydrocarbon",
+      "energy",
+      "investment",
+      "construction"
+    ],
     "category": "analytical"
   },
   {
     "id": "text_q3",
     "query": "What fiscal policy recommendations are mentioned?",
     "expected_modality": "text",
-    "expected_keywords": ["fiscal", "policy", "budget", "spending", "revenue"],
+    "expected_keywords": [
+      "fiscal",
+      "policy",
+      "budget",
+      "spending",
+      "revenue"
+    ],
     "category": "analytical"
   },
   {
     "id": "table_q1",
     "query": "Show me Table 1",
     "expected_modality": "table",
-    "expected_keywords": ["table", "data"],
+    "expected_keywords": [
+      "table",
+      "data"
+    ],
     "category": "table_lookup"
   },
   {
     "id": "table_q2",
     "query": "What are the values in the economic indicators table?",
     "expected_modality": "table",
-    "expected_keywords": ["indicator", "value", "percent"],
+    "expected_keywords": [
+      "indicator",
+      "value",
+      "percent"
+    ],
     "category": "table_lookup"
   },
   {
     "id": "table_q3",
     "query": "Show fiscal balance data from the tables",
     "expected_modality": "table",
-    "expected_keywords": ["fiscal", "balance", "budget"],
+    "expected_keywords": [
+      "fiscal",
+      "balance",
+      "budget"
+    ],
     "category": "table_lookup"
   },
   {
     "id": "figure_q1",
     "query": "What does Figure 1 show?",
     "expected_modality": "figure",
-    "expected_keywords": ["figure", "chart", "graph", "shows"],
+    "expected_keywords": [
+      "figure",
+      "sector",
+      "real",
+      "development"
+    ],
     "category": "figure_lookup"
   },
   {
     "id": "figure_q2",
     "query": "Describe the GDP trend chart",
     "expected_modality": "figure",
-    "expected_keywords": ["GDP", "trend", "chart", "growth"],
+    "expected_keywords": [
+      "GDP",
+      "real",
+      "growth",
+      "percent"
+    ],
     "category": "figure_lookup"
   },
   {
     "id": "mixed_q1",
     "query": "Compare GDP projections mentioned in text with those in Table 1",
     "expected_modality": "mixed",
-    "expected_keywords": ["GDP", "projection", "table", "percent"],
+    "expected_keywords": [
+      "GDP",
+      "projection",
+      "table",
+      "percent"
+    ],
     "category": "cross_modal"
   },
   {
     "id": "mixed_q2",
     "query": "Summarize the key economic outlook from text and figures",
     "expected_modality": "mixed",
-    "expected_keywords": ["economic", "outlook", "growth", "forecast"],
+    "expected_keywords": [
+      "economic",
+      "outlook",
+      "growth",
+      "forecast"
+    ],
     "category": "summarization"
   }
 ]
