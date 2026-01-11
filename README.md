@@ -2,7 +2,7 @@
 
 A production-ready Multi-Modal Retrieval-Augmented Generation (RAG) system capable of processing and answering questions from documents containing text, tables, and figures.
 
-<img width="1362" height="639" alt="image" src="https://github.com/user-attachments/assets/fe277a18-4055-4980-8e24-1a46b0fe8f28" />
+![20260111-1657-49 1187260-ezgif com-video-to-gif-converter](https://github.com/user-attachments/assets/b953c176-ab0c-4a70-b223-a8a4fb70b67f)
 
 
 ## Features
@@ -65,6 +65,7 @@ python demo.py
 - **Vector DB**: ChromaDB
 - **Frontend**: Streamlit
 - **PDF Processing**: PyMuPDF, Tabula, PDF2Image
+
 
 
 
