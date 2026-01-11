@@ -57,9 +57,10 @@ python demo.py
 
 ## Tech Stack
 
-- **LLM**: Google Gemini 2.0 Flash
+- **LLM**: Google Gemini
 - **Embeddings**: SentenceTransformers (`all-MiniLM-L6-v2`)
 - **Vector DB**: ChromaDB
 - **Frontend**: Streamlit
 - **PDF Processing**: PyMuPDF, Tabula, PDF2Image
+
 
