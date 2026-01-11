@@ -1,0 +1,318 @@
+{
+  "metadata": {
+    "timestamp": "2026-01-11T17:49:30.322083",
+    "total_queries": 10,
+    "use_llm": false,
+    "vector_store": "./outputs/vectordb"
+  },
+  "summary": {
+    "passed": 0,
+    "failed": 10,
+    "pass_rate": 0.0,
+    "avg_retrieval_ms": 0.0,
+    "avg_generation_ms": 0.0,
+    "avg_total_ms": 0.0,
+    "avg_keyword_score": 0.0
+  },
+  "modality_breakdown": {
+    "text": {
+      "total": 3,
+      "passed": 0,
+      "pass_rate": 0.0,
+      "avg_latency_ms": 0.0,
+      "avg_keyword_score": 0.0
+    },
+    "table": {
+      "total": 3,
+      "passed": 0,
+      "pass_rate": 0.0,
+      "avg_latency_ms": 0.0,
+      "avg_keyword_score": 0.0
+    },
+    "figure": {
+      "total": 2,
+      "passed": 0,
+      "pass_rate": 0.0,
+      "avg_latency_ms": 0.0,
+      "avg_keyword_score": 0.0
+    },
+    "mixed": {
+      "total": 2,
+      "passed": 0,
+      "pass_rate": 0.0,
+      "avg_latency_ms": 0.0,
+      "avg_keyword_score": 0.0
+    }
+  },
+  "category_breakdown": {
+    "table_lookup": {
+      "total": 3,
+      "passed": 0,
+      "pass_rate": 0.0
+    },
+    "figure_lookup": {
+      "total": 2,
+      "passed": 0,
+      "pass_rate": 0.0
+    },
+    "summarization": {
+      "total": 1,
+      "passed": 0,
+      "pass_rate": 0.0
+    },
+    "factual": {
+      "total": 1,
+      "passed": 0,
+      "pass_rate": 0.0
+    },
+    "analytical": {
+      "total": 2,
+      "passed": 0,
+      "pass_rate": 0.0
+    },
+    "cross_modal": {
+      "total": 1,
+      "passed": 0,
+      "pass_rate": 0.0
+    }
+  },
+  "results": [
+    {
+      "query_id": "text_q1",
+      "query": "What is the GDP growth projection for Qatar?",
+      "category": "factual",
+      "expected_modality": "text",
+      "retrieval_time_ms": 0,
+      "generation_time_ms": 0,
+      "total_time_ms": 0,
+      "retrieved_modalities": [],
+      "num_chunks": 0,
+      "top_scores": [],
+      "answer": "ERROR: 'Answer' object has no attribute 'answer'",
+      "citations": [],
+      "modality_match": false,
+      "keyword_score": 0.0,
+      "keywords_found": [],
+      "keywords_missing": [
+        "GDP",
+        "growth",
+        "percent",
+        "%"
+      ],
+      "passed": false
+    },
+    {
+      "query_id": "text_q2",
+      "query": "What are the main drivers of economic growth?",
+      "category": "analytical",
+      "expected_modality": "text",
+      "retrieval_time_ms": 0,
+      "generation_time_ms": 0,
+      "total_time_ms": 0,
+      "retrieved_modalities": [],
+      "num_chunks": 0,
+      "top_scores": [],
+      "answer": "ERROR: 'Answer' object has no attribute 'answer'",
+      "citations": [],
+      "modality_match": false,
+      "keyword_score": 0.0,
+      "keywords_found": [],
+      "keywords_missing": [
+        "hydrocarbon",
+        "energy",
+        "investment",
+        "construction"
+      ],
+      "passed": false
+    },
+    {
+      "query_id": "text_q3",
+      "query": "What fiscal policy recommendations are mentioned?",
+      "category": "analytical",
+      "expected_modality": "text",
+      "retrieval_time_ms": 0,
+      "generation_time_ms": 0,
+      "total_time_ms": 0,
+      "retrieved_modalities": [],
+      "num_chunks": 0,
+      "top_scores": [],
+      "answer": "ERROR: 'Answer' object has no attribute 'answer'",
+      "citations": [],
+      "modality_match": false,
+      "keyword_score": 0.0,
+      "keywords_found": [],
+      "keywords_missing": [
+        "fiscal",
+        "policy",
+        "budget",
+        "spending",
+        "revenue"
+      ],
+      "passed": false
+    },
+    {
+      "query_id": "table_q1",
+      "query": "Show me Table 1",
+      "category": "table_lookup",
+      "expected_modality": "table",
+      "retrieval_time_ms": 0,
+      "generation_time_ms": 0,
+      "total_time_ms": 0,
+      "retrieved_modalities": [],
+      "num_chunks": 0,
+      "top_scores": [],
+      "answer": "ERROR: 'Answer' object has no attribute 'answer'",
+      "citations": [],
+      "modality_match": false,
+      "keyword_score": 0.0,
+      "keywords_found": [],
+      "keywords_missing": [
+        "table",
+        "data"
+      ],
+      "passed": false
+    },
+    {
+      "query_id": "table_q2",
+      "query": "What are the values in the economic indicators table?",
+      "category": "table_lookup",
+      "expected_modality": "table",
+      "retrieval_time_ms": 0,
+      "generation_time_ms": 0,
+      "total_time_ms": 0,
+      "retrieved_modalities": [],
+      "num_chunks": 0,
+      "top_scores": [],
+      "answer": "ERROR: 'Answer' object has no attribute 'answer'",
+      "citations": [],
+      "modality_match": false,
+      "keyword_score": 0.0,
+      "keywords_found": [],
+      "keywords_missing": [
+        "indicator",
+        "value",
+        "percent"
+      ],
+      "passed": false
+    },
+    {
+      "query_id": "table_q3",
+      "query": "Show fiscal balance data from the tables",
+      "category": "table_lookup",
+      "expected_modality": "table",
+      "retrieval_time_ms": 0,
+      "generation_time_ms": 0,
+      "total_time_ms": 0,
+      "retrieved_modalities": [],
+      "num_chunks": 0,
+      "top_scores": [],
+      "answer": "ERROR: 'Answer' object has no attribute 'answer'",
+      "citations": [],
+      "modality_match": false,
+      "keyword_score": 0.0,
+      "keywords_found": [],
+      "keywords_missing": [
+        "fiscal",
+        "balance",
+        "budget"
+      ],
+      "passed": false
+    },
+    {
+      "query_id": "figure_q1",
+      "query": "What does Figure 1 show?",
+      "category": "figure_lookup",
+      "expected_modality": "figure",
+      "retrieval_time_ms": 0,
+      "generation_time_ms": 0,
+      "total_time_ms": 0,
+      "retrieved_modalities": [],
+      "num_chunks": 0,
+      "top_scores": [],
+      "answer": "ERROR: 'Answer' object has no attribute 'answer'",
+      "citations": [],
+      "modality_match": false,
+      "keyword_score": 0.0,
+      "keywords_found": [],
+      "keywords_missing": [
+        "figure",
+        "chart",
+        "graph",
+        "shows"
+      ],
+      "passed": false
+    },
+    {
+      "query_id": "figure_q2",
+      "query": "Describe the GDP trend chart",
+      "category": "figure_lookup",
+      "expected_modality": "figure",
+      "retrieval_time_ms": 0,
+      "generation_time_ms": 0,
+      "total_time_ms": 0,
+      "retrieved_modalities": [],
+      "num_chunks": 0,
+      "top_scores": [],
+      "answer": "ERROR: 'Answer' object has no attribute 'answer'",
+      "citations": [],
+      "modality_match": false,
+      "keyword_score": 0.0,
+      "keywords_found": [],
+      "keywords_missing": [
+        "GDP",
+        "trend",
+        "chart",
+        "growth"
+      ],
+      "passed": false
+    },
+    {
+      "query_id": "mixed_q1",
+      "query": "Compare GDP projections mentioned in text with those in Table 1",
+      "category": "cross_modal",
+      "expected_modality": "mixed",
+      "retrieval_time_ms": 0,
+      "generation_time_ms": 0,
+      "total_time_ms": 0,
+      "retrieved_modalities": [],
+      "num_chunks": 0,
+      "top_scores": [],
+      "answer": "ERROR: 'Answer' object has no attribute 'answer'",
+      "citations": [],
+      "modality_match": false,
+      "keyword_score": 0.0,
+      "keywords_found": [],
+      "keywords_missing": [
+        "GDP",
+        "projection",
+        "table",
+        "percent"
+      ],
+      "passed": false
+    },
+    {
+      "query_id": "mixed_q2",
+      "query": "Summarize the key economic outlook from text and figures",
+      "category": "summarization",
+      "expected_modality": "mixed",
+      "retrieval_time_ms": 0,
+      "generation_time_ms": 0,
+      "total_time_ms": 0,
+      "retrieved_modalities": [],
+      "num_chunks": 0,
+      "top_scores": [],
+      "answer": "ERROR: 'Answer' object has no attribute 'answer'",
+      "citations": [],
+      "modality_match": false,
+      "keyword_score": 0.0,
+      "keywords_found": [],
+      "keywords_missing": [
+        "economic",
+        "outlook",
+        "growth",
+        "forecast"
+      ],
+      "passed": false
+    }
+  ]
+}

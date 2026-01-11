@@ -1,0 +1,17 @@
+streamlit
+google-generativeai
+langchain
+langchain-google-genai
+chromadb
+sentence-transformers
+python-dotenv
+pandas
+plotly
+pypdf
+tabula-py
+pdf2image
+camelot-py
+numpy
+scikit-learn
+pymupdf
+tqdm

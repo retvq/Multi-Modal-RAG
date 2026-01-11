@@ -1,0 +1,463 @@
+{
+  "metadata": {
+    "timestamp": "2026-01-11T17:52:37.773920",
+    "total_queries": 10,
+    "use_llm": false,
+    "vector_store": "./outputs/vectordb"
+  },
+  "summary": {
+    "passed": 2,
+    "failed": 8,
+    "pass_rate": 0.2,
+    "avg_retrieval_ms": 48.24,
+    "avg_generation_ms": 0.61,
+    "avg_total_ms": 48.85,
+    "avg_keyword_score": 0.185
+  },
+  "modality_breakdown": {
+    "text": {
+      "total": 3,
+      "passed": 1,
+      "pass_rate": 0.3333333333333333,
+      "avg_latency_ms": 65.64333333333333,
+      "avg_keyword_score": 0.2833333333333333
+    },
+    "table": {
+      "total": 3,
+      "passed": 1,
+      "pass_rate": 0.3333333333333333,
+      "avg_latency_ms": 43.906666666666666,
+      "avg_keyword_score": 0.16666666666666666
+    },
+    "figure": {
+      "total": 2,
+      "passed": 0,
+      "pass_rate": 0.0,
+      "avg_latency_ms": 37.614999999999995,
+      "avg_keyword_score": 0.0
+    },
+    "mixed": {
+      "total": 2,
+      "passed": 0,
+      "pass_rate": 0.0,
+      "avg_latency_ms": 42.31,
+      "avg_keyword_score": 0.25
+    }
+  },
+  "category_breakdown": {
+    "figure_lookup": {
+      "total": 2,
+      "passed": 0,
+      "pass_rate": 0.0
+    },
+    "summarization": {
+      "total": 1,
+      "passed": 0,
+      "pass_rate": 0.0
+    },
+    "analytical": {
+      "total": 2,
+      "passed": 1,
+      "pass_rate": 0.5
+    },
+    "factual": {
+      "total": 1,
+      "passed": 0,
+      "pass_rate": 0.0
+    },
+    "table_lookup": {
+      "total": 3,
+      "passed": 1,
+      "pass_rate": 0.3333333333333333
+    },
+    "cross_modal": {
+      "total": 1,
+      "passed": 0,
+      "pass_rate": 0.0
+    }
+  },
+  "results": [
+    {
+      "query_id": "text_q1",
+      "query": "What is the GDP growth projection for Qatar?",
+      "category": "factual",
+      "expected_modality": "text",
+      "retrieval_time_ms": 80.98,
+      "generation_time_ms": 2.45,
+      "total_time_ms": 83.43,
+      "retrieved_modalities": [
+        "table",
+        "figure",
+        "text",
+        "text",
+        "table"
+      ],
+      "num_chunks": 5,
+      "top_scores": [
+        0.0317,
+        0.029,
+        0.0164
+      ],
+      "answer": "Based on retrieved content: Nominal GDP (billions of Qatari Riyals) 525.7 654.2 858.0 775.3 813.6 828.9 882.7 955.7 998.0 1027.4 [1]",
+      "citations": [
+        "Page 42: TABLE",
+        "Page 8: FIGURE",
+        "Page 39: TEXT"
+      ],
+      "modality_match": true,
+      "keyword_score": 0.25,
+      "keywords_found": [
+        "GDP"
+      ],
+      "keywords_missing": [
+        "growth",
+        "percent",
+        "%"
+      ],
+      "passed": false
+    },
+    {
+      "query_id": "text_q2",
+      "query": "What are the main drivers of economic growth?",
+      "category": "analytical",
+      "expected_modality": "text",
+      "retrieval_time_ms": 53.74,
+      "generation_time_ms": 0.16,
+      "total_time_ms": 53.9,
+      "retrieved_modalities": [
+        "text",
+        "figure",
+        "text",
+        "text",
+        "table"
+      ],
+      "num_chunks": 5,
+      "top_scores": [
+        0.0315,
+        0.0281,
+        0.0164
+      ],
+      "answer": "Based on retrieved content: Context: Growth normalization after the 2022 FIFA World Cup continued with signs of activities strengthening more recently. [1]",
+      "citations": [
+        "Page 5: TEXT",
+        "Page 8: FIGURE",
+        "Page 8: TEXT"
+      ],
+      "modality_match": true,
+      "keyword_score": 0.0,
+      "keywords_found": [],
+      "keywords_missing": [
+        "hydrocarbon",
+        "energy",
+        "investment",
+        "construction"
+      ],
+      "passed": false
+    },
+    {
+      "query_id": "text_q3",
+      "query": "What fiscal policy recommendations are mentioned?",
+      "category": "analytical",
+      "expected_modality": "text",
+      "retrieval_time_ms": 58.39,
+      "generation_time_ms": 1.21,
+      "total_time_ms": 59.6,
+      "retrieved_modalities": [
+        "text",
+        "text",
+        "text",
+        "text",
+        "text"
+      ],
+      "num_chunks": 5,
+      "top_scores": [
+        0.0325,
+        0.0325,
+        0.0308
+      ],
+      "answer": "Building on the progress in implementing past recommendations (Annex VI), policy discussions focused on: (i) sustaining fiscal discipline and accelerating revenue, expenditure and fiscal institutional reforms; (ii) safeguarding financial sector stability and deepening financial markets; (iii) further enhancing the effectiveness of the monetary policy operational framework; and (iv) intensifying structural reforms guided by NDS3. [1]",
+      "citations": [
+        "Page 14: TEXT",
+        "Page 5: TEXT",
+        "Page 6: TEXT"
+      ],
+      "modality_match": true,
+      "keyword_score": 0.6,
+      "keywords_found": [
+        "fiscal",
+        "policy",
+        "revenue"
+      ],
+      "keywords_missing": [
+        "budget",
+        "spending"
+      ],
+      "passed": true
+    },
+    {
+      "query_id": "table_q1",
+      "query": "Show me Table 1",
+      "category": "table_lookup",
+      "expected_modality": "table",
+      "retrieval_time_ms": 14.89,
+      "generation_time_ms": 0.26,
+      "total_time_ms": 15.14,
+      "retrieved_modalities": [
+        "text",
+        "table",
+        "text",
+        "table",
+        "text"
+      ],
+      "num_chunks": 5,
+      "top_scores": [
+        0.0164,
+        0.0164,
+        0.0161
+      ],
+      "answer": "I cannot answer this question. Table 1 not found.",
+      "citations": [
+        "Page 6: TEXT",
+        "Page 5: TABLE",
+        "Page 10: TEXT"
+      ],
+      "modality_match": true,
+      "keyword_score": 0.5,
+      "keywords_found": [
+        "table"
+      ],
+      "keywords_missing": [
+        "data"
+      ],
+      "passed": true
+    },
+    {
+      "query_id": "table_q2",
+      "query": "What are the values in the economic indicators table?",
+      "category": "table_lookup",
+      "expected_modality": "table",
+      "retrieval_time_ms": 58.87,
+      "generation_time_ms": 0.18,
+      "total_time_ms": 59.05,
+      "retrieved_modalities": [
+        "text",
+        "table",
+        "table",
+        "text",
+        "text"
+      ],
+      "num_chunks": 5,
+      "top_scores": [
+        0.0164,
+        0.0164,
+        0.0164
+      ],
+      "answer": "Based on retrieved content: Real GDP (2018 prices) -3.6 1.6 4.2 1.2 1.7 2.4 5.2 7.9 3.5 1.6 [1]",
+      "citations": [
+        "Page 39: TEXT",
+        "Page 39: TABLE",
+        "Page 5: TABLE"
+      ],
+      "modality_match": true,
+      "keyword_score": 0.0,
+      "keywords_found": [],
+      "keywords_missing": [
+        "indicator",
+        "value",
+        "percent"
+      ],
+      "passed": false
+    },
+    {
+      "query_id": "table_q3",
+      "query": "Show fiscal balance data from the tables",
+      "category": "table_lookup",
+      "expected_modality": "table",
+      "retrieval_time_ms": 57.41,
+      "generation_time_ms": 0.12,
+      "total_time_ms": 57.53,
+      "retrieved_modalities": [
+        "table",
+        "table",
+        "table",
+        "text",
+        "text"
+      ],
+      "num_chunks": 5,
+      "top_scores": [
+        0.0302,
+        0.0299,
+        0.0284
+      ],
+      "answer": "Multiple tables detected. Please specify a table number (e.g., 'Show me Table 1').",
+      "citations": [
+        "Page 8: TABLE",
+        "Page 42: TABLE",
+        "Page 14: TABLE"
+      ],
+      "modality_match": true,
+      "keyword_score": 0.0,
+      "keywords_found": [],
+      "keywords_missing": [
+        "fiscal",
+        "balance",
+        "budget"
+      ],
+      "passed": false
+    },
+    {
+      "query_id": "figure_q1",
+      "query": "What does Figure 1 show?",
+      "category": "figure_lookup",
+      "expected_modality": "figure",
+      "retrieval_time_ms": 17.32,
+      "generation_time_ms": 0.25,
+      "total_time_ms": 17.57,
+      "retrieved_modalities": [
+        "text",
+        "figure",
+        "text",
+        "figure",
+        "text"
+      ],
+      "num_chunks": 5,
+      "top_scores": [
+        0.0164,
+        0.0164,
+        0.0161
+      ],
+      "answer": "Based on retrieved content: boxes 1. [1]",
+      "citations": [
+        "Page 6: TEXT",
+        "Page 5: FIGURE",
+        "Page 8: TEXT"
+      ],
+      "modality_match": true,
+      "keyword_score": 0.0,
+      "keywords_found": [],
+      "keywords_missing": [
+        "figure",
+        "chart",
+        "graph",
+        "shows"
+      ],
+      "passed": false
+    },
+    {
+      "query_id": "figure_q2",
+      "query": "Describe the GDP trend chart",
+      "category": "figure_lookup",
+      "expected_modality": "figure",
+      "retrieval_time_ms": 56.92,
+      "generation_time_ms": 0.74,
+      "total_time_ms": 57.66,
+      "retrieved_modalities": [
+        "figure",
+        "figure",
+        "text",
+        "text",
+        "figure"
+      ],
+      "num_chunks": 5,
+      "top_scores": [
+        0.0323,
+        0.0317,
+        0.0164
+      ],
+      "answer": "I cannot answer this question. Insufficient summary-quality content found.",
+      "citations": [
+        "Page 8: FIGURE",
+        "Page 8: FIGURE",
+        "Page 39: TEXT"
+      ],
+      "modality_match": true,
+      "keyword_score": 0.0,
+      "keywords_found": [],
+      "keywords_missing": [
+        "GDP",
+        "trend",
+        "chart",
+        "growth"
+      ],
+      "passed": false
+    },
+    {
+      "query_id": "mixed_q1",
+      "query": "Compare GDP projections mentioned in text with those in Table 1",
+      "category": "cross_modal",
+      "expected_modality": "mixed",
+      "retrieval_time_ms": 21.12,
+      "generation_time_ms": 0.14,
+      "total_time_ms": 21.26,
+      "retrieved_modalities": [
+        "text",
+        "table",
+        "text",
+        "table",
+        "text"
+      ],
+      "num_chunks": 5,
+      "top_scores": [
+        0.0164,
+        0.0164,
+        0.0161
+      ],
+      "answer": "I cannot answer this question. Table 1 not found.",
+      "citations": [
+        "Page 9: TEXT",
+        "Page 5: TABLE",
+        "Page 10: TEXT"
+      ],
+      "modality_match": true,
+      "keyword_score": 0.25,
+      "keywords_found": [
+        "table"
+      ],
+      "keywords_missing": [
+        "GDP",
+        "projection",
+        "percent"
+      ],
+      "passed": false
+    },
+    {
+      "query_id": "mixed_q2",
+      "query": "Summarize the key economic outlook from text and figures",
+      "category": "summarization",
+      "expected_modality": "mixed",
+      "retrieval_time_ms": 62.73,
+      "generation_time_ms": 0.64,
+      "total_time_ms": 63.36,
+      "retrieved_modalities": [
+        "text",
+        "text",
+        "figure",
+        "text",
+        "text"
+      ],
+      "num_chunks": 5,
+      "top_scores": [
+        0.0164,
+        0.0164,
+        0.0164
+      ],
+      "answer": "driven by significant public infrastructure investment over the last decade, qatar’s non- hydrocarbon economy has grown to account for about two-thirds of the total output. [1] main external downside risks include a sharper-than-expected global growth slowdown, increased volatility in global financial conditions and commodity prices, and further worsening of geopolitical tensions. [2]",
+      "citations": [
+        "Page 9: TEXT",
+        "Page 13: TEXT",
+        "Page 5: FIGURE"
+      ],
+      "modality_match": true,
+      "keyword_score": 0.25,
+      "keywords_found": [
+        "growth"
+      ],
+      "keywords_missing": [
+        "economic",
+        "outlook",
+        "forecast"
+      ],
+      "passed": false
+    }
+  ]
+}

@@ -1,0 +1,466 @@
+{
+  "metadata": {
+    "timestamp": "2026-01-11T17:54:09.579865",
+    "total_queries": 10,
+    "use_llm": true,
+    "vector_store": "./outputs/vectordb"
+  },
+  "summary": {
+    "passed": 9,
+    "failed": 1,
+    "pass_rate": 0.9,
+    "avg_retrieval_ms": 74.13,
+    "avg_generation_ms": 6649.65,
+    "avg_total_ms": 6723.78,
+    "avg_keyword_score": 0.672
+  },
+  "modality_breakdown": {
+    "text": {
+      "total": 3,
+      "passed": 3,
+      "pass_rate": 1.0,
+      "avg_latency_ms": 3947.91,
+      "avg_keyword_score": 0.6833333333333332
+    },
+    "table": {
+      "total": 3,
+      "passed": 3,
+      "pass_rate": 1.0,
+      "avg_latency_ms": 11219.006666666666,
+      "avg_keyword_score": 0.7223333333333333
+    },
+    "figure": {
+      "total": 2,
+      "passed": 1,
+      "pass_rate": 0.5,
+      "avg_latency_ms": 6056.92,
+      "avg_keyword_score": 0.375
+    },
+    "mixed": {
+      "total": 2,
+      "passed": 2,
+      "pass_rate": 1.0,
+      "avg_latency_ms": 4811.625,
+      "avg_keyword_score": 0.875
+    }
+  },
+  "category_breakdown": {
+    "figure_lookup": {
+      "total": 2,
+      "passed": 1,
+      "pass_rate": 0.5
+    },
+    "analytical": {
+      "total": 2,
+      "passed": 2,
+      "pass_rate": 1.0
+    },
+    "cross_modal": {
+      "total": 1,
+      "passed": 1,
+      "pass_rate": 1.0
+    },
+    "table_lookup": {
+      "total": 3,
+      "passed": 3,
+      "pass_rate": 1.0
+    },
+    "factual": {
+      "total": 1,
+      "passed": 1,
+      "pass_rate": 1.0
+    },
+    "summarization": {
+      "total": 1,
+      "passed": 1,
+      "pass_rate": 1.0
+    }
+  },
+  "results": [
+    {
+      "query_id": "text_q1",
+      "query": "What is the GDP growth projection for Qatar?",
+      "category": "factual",
+      "expected_modality": "text",
+      "retrieval_time_ms": 79.03,
+      "generation_time_ms": 4292.42,
+      "total_time_ms": 4371.45,
+      "retrieved_modalities": [
+        "table",
+        "figure",
+        "text",
+        "text",
+        "table"
+      ],
+      "num_chunks": 5,
+      "top_scores": [
+        0.0317,
+        0.029,
+        0.0164
+      ],
+      "answer": "Real GDP growth for Qatar is projected to improve to 2 percent in 2024–25. Over the medium term, growth is expected to accelerate to an average of approximately 4¾ percent, driven by the North Field LNG production expansion and initial NDS3 reform gains [3].",
+      "citations": [
+        "Page 42: TABLE",
+        "Page 8: FIGURE",
+        "Page 39: TEXT"
+      ],
+      "modality_match": true,
+      "keyword_score": 0.75,
+      "keywords_found": [
+        "GDP",
+        "growth",
+        "percent"
+      ],
+      "keywords_missing": [
+        "%"
+      ],
+      "passed": true
+    },
+    {
+      "query_id": "text_q2",
+      "query": "What are the main drivers of economic growth?",
+      "category": "analytical",
+      "expected_modality": "text",
+      "retrieval_time_ms": 84.79,
+      "generation_time_ms": 3599.0,
+      "total_time_ms": 3683.79,
+      "retrieved_modalities": [
+        "text",
+        "figure",
+        "text",
+        "text",
+        "table"
+      ],
+      "num_chunks": 5,
+      "top_scores": [
+        0.0315,
+        0.0281,
+        0.0164
+      ],
+      "answer": "Qatar's non-hydrocarbon economy has grown, accounting for about two-thirds of the total output, primarily driven by significant public infrastructure investment over the last decade [1]. The Third National Development Strategy (NDS3) is also guiding a new course for economic transformation [1]. While the state-driven growth model has been costly, more durable growth is expected to come from the private sector [2].",
+      "citations": [
+        "Page 5: TEXT",
+        "Page 8: FIGURE",
+        "Page 8: TEXT"
+      ],
+      "modality_match": true,
+      "keyword_score": 0.5,
+      "keywords_found": [
+        "hydrocarbon",
+        "investment"
+      ],
+      "keywords_missing": [
+        "energy",
+        "construction"
+      ],
+      "passed": true
+    },
+    {
+      "query_id": "text_q3",
+      "query": "What fiscal policy recommendations are mentioned?",
+      "category": "analytical",
+      "expected_modality": "text",
+      "retrieval_time_ms": 74.66,
+      "generation_time_ms": 3713.82,
+      "total_time_ms": 3788.49,
+      "retrieved_modalities": [
+        "text",
+        "text",
+        "text",
+        "text",
+        "text"
+      ],
+      "num_chunks": 5,
+      "top_scores": [
+        0.0325,
+        0.0325,
+        0.0308
+      ],
+      "answer": "Fiscal policy recommendations include sustaining fiscal discipline and accelerating revenue, expenditure, and fiscal institutional reforms [0]. Specific recommendations involve accelerating revenue diversification, such as introducing a value-added tax and broadening the corporate income tax [1]. It is also recommended to enhance spending efficiency, gradually align domestic energy prices with export prices, and reorient spending to support private sector-driven growth [1]. Adopting a full-fledg",
+      "citations": [
+        "Page 14: TEXT",
+        "Page 5: TEXT",
+        "Page 6: TEXT"
+      ],
+      "modality_match": true,
+      "keyword_score": 0.8,
+      "keywords_found": [
+        "fiscal",
+        "policy",
+        "spending",
+        "revenue"
+      ],
+      "keywords_missing": [
+        "budget"
+      ],
+      "passed": true
+    },
+    {
+      "query_id": "table_q1",
+      "query": "Show me Table 1",
+      "category": "table_lookup",
+      "expected_modality": "table",
+      "retrieval_time_ms": 21.71,
+      "generation_time_ms": 2703.57,
+      "total_time_ms": 2725.28,
+      "retrieved_modalities": [
+        "text",
+        "table",
+        "text",
+        "table",
+        "text"
+      ],
+      "num_chunks": 5,
+      "top_scores": [
+        0.0164,
+        0.0164,
+        0.0161
+      ],
+      "answer": "The provided documents do not contain the content of Table 1. Chunk [0] indicates that \"Table 1. selected macroeconomic indicators, 2020-29\" is available on page 35, but its content is not included in the context.",
+      "citations": [
+        "Page 6: TEXT",
+        "Page 5: TABLE",
+        "Page 10: TEXT"
+      ],
+      "modality_match": true,
+      "keyword_score": 0.5,
+      "keywords_found": [
+        "table"
+      ],
+      "keywords_missing": [
+        "data"
+      ],
+      "passed": true
+    },
+    {
+      "query_id": "table_q2",
+      "query": "What are the values in the economic indicators table?",
+      "category": "table_lookup",
+      "expected_modality": "table",
+      "retrieval_time_ms": 122.0,
+      "generation_time_ms": 28177.96,
+      "total_time_ms": 28299.96,
+      "retrieved_modalities": [
+        "text",
+        "table",
+        "table",
+        "text",
+        "text"
+      ],
+      "num_chunks": 5,
+      "top_scores": [
+        0.0164,
+        0.0164,
+        0.0164
+      ],
+      "answer": "The economic indicators table, titled \"table 1. qatar: selected macroeconomic indicators, 2020-29\" [1], provides the following values for the years 2020 through 2029:\n\n**Years:** 2020, 2021, 2022, 2023, 2024, 2025, 2026, 2027, 2028, 2029\n\n**National Account (percent change unless otherwise noted):**\n- Nominal GDP (billions of Qatari riyals): 525.7, 654.2, 858.0, 775.3, 813.6, 828.9, 882.7, 955.7, 998.0, 1027.4\n- Nominal Hydrocarbon GDP (billions of Qatari riyals): 152.3, 240.8, 380.3, 304.5, 317",
+      "citations": [
+        "Page 39: TEXT",
+        "Page 39: TABLE",
+        "Page 5: TABLE"
+      ],
+      "modality_match": true,
+      "keyword_score": 1.0,
+      "keywords_found": [
+        "indicator",
+        "value",
+        "percent"
+      ],
+      "keywords_missing": [],
+      "passed": true
+    },
+    {
+      "query_id": "table_q3",
+      "query": "Show fiscal balance data from the tables",
+      "category": "table_lookup",
+      "expected_modality": "table",
+      "retrieval_time_ms": 87.01,
+      "generation_time_ms": 2544.77,
+      "total_time_ms": 2631.78,
+      "retrieved_modalities": [
+        "table",
+        "table",
+        "table",
+        "text",
+        "text"
+      ],
+      "num_chunks": 5,
+      "top_scores": [
+        0.0302,
+        0.0299,
+        0.0284
+      ],
+      "answer": "The primary fiscal balance data is 0.2, 2.0, 11.7, 7.0, 1.6, 3.7, 5.9, 5.8, 5.4, 5.7 [1]. The central government fiscal balance data is -2.1, 0.2, 10.4, 5.6, 0.3, 2.5, 4.7, 4.7, 4.4, 4.6 [3].",
+      "citations": [
+        "Page 8: TABLE",
+        "Page 42: TABLE",
+        "Page 14: TABLE"
+      ],
+      "modality_match": true,
+      "keyword_score": 0.667,
+      "keywords_found": [
+        "fiscal",
+        "balance"
+      ],
+      "keywords_missing": [
+        "budget"
+      ],
+      "passed": true
+    },
+    {
+      "query_id": "figure_q1",
+      "query": "What does Figure 1 show?",
+      "category": "figure_lookup",
+      "expected_modality": "figure",
+      "retrieval_time_ms": 35.99,
+      "generation_time_ms": 6549.19,
+      "total_time_ms": 6585.18,
+      "retrieved_modalities": [
+        "text",
+        "figure",
+        "text",
+        "figure",
+        "text"
+      ],
+      "num_chunks": 5,
+      "top_scores": [
+        0.0164,
+        0.0164,
+        0.0161
+      ],
+      "answer": "According to the Press Release, Figure 1 shows real sector developments [0]. According to the Staff Report, text figure 1 shows Qatar’s diversification progress and challenges [4].",
+      "citations": [
+        "Page 6: TEXT",
+        "Page 5: FIGURE",
+        "Page 8: TEXT"
+      ],
+      "modality_match": true,
+      "keyword_score": 0.5,
+      "keywords_found": [
+        "figure",
+        "shows"
+      ],
+      "keywords_missing": [
+        "chart",
+        "graph"
+      ],
+      "passed": true
+    },
+    {
+      "query_id": "figure_q2",
+      "query": "Describe the GDP trend chart",
+      "category": "figure_lookup",
+      "expected_modality": "figure",
+      "retrieval_time_ms": 102.0,
+      "generation_time_ms": 5426.66,
+      "total_time_ms": 5528.66,
+      "retrieved_modalities": [
+        "figure",
+        "figure",
+        "text",
+        "text",
+        "figure"
+      ],
+      "num_chunks": 5,
+      "top_scores": [
+        0.0323,
+        0.0317,
+        0.0164
+      ],
+      "answer": "The provided documents list Real GDP (2018 prices) figures as -3.6, 1.6, 4.2, 1.2, 1.7, 2.4, 5.2, 7.9, 3.5, and 1.6 [2].",
+      "citations": [
+        "Page 8: FIGURE",
+        "Page 8: FIGURE",
+        "Page 39: TEXT"
+      ],
+      "modality_match": true,
+      "keyword_score": 0.25,
+      "keywords_found": [
+        "GDP"
+      ],
+      "keywords_missing": [
+        "trend",
+        "chart",
+        "growth"
+      ],
+      "passed": false
+    },
+    {
+      "query_id": "mixed_q1",
+      "query": "Compare GDP projections mentioned in text with those in Table 1",
+      "category": "cross_modal",
+      "expected_modality": "mixed",
+      "retrieval_time_ms": 37.81,
+      "generation_time_ms": 3864.55,
+      "total_time_ms": 3902.36,
+      "retrieved_modalities": [
+        "text",
+        "table",
+        "text",
+        "table",
+        "text"
+      ],
+      "num_chunks": 5,
+      "top_scores": [
+        0.0164,
+        0.0164,
+        0.0161
+      ],
+      "answer": "The provided documents do not contain the content of Table 1, therefore a comparison of GDP projections mentioned in the text with those in Table 1 cannot be made. However, the text projects real GDP growth to improve to 2 percent in 2024–25, and accelerate to an average of around 4¾ percent over the medium term [4].",
+      "citations": [
+        "Page 9: TEXT",
+        "Page 5: TABLE",
+        "Page 10: TEXT"
+      ],
+      "modality_match": true,
+      "keyword_score": 1.0,
+      "keywords_found": [
+        "GDP",
+        "projection",
+        "table",
+        "percent"
+      ],
+      "keywords_missing": [],
+      "passed": true
+    },
+    {
+      "query_id": "mixed_q2",
+      "query": "Summarize the key economic outlook from text and figures",
+      "category": "summarization",
+      "expected_modality": "mixed",
+      "retrieval_time_ms": 96.31,
+      "generation_time_ms": 5624.58,
+      "total_time_ms": 5720.89,
+      "retrieved_modalities": [
+        "text",
+        "text",
+        "figure",
+        "text",
+        "text"
+      ],
+      "num_chunks": 5,
+      "top_scores": [
+        0.0164,
+        0.0164,
+        0.0164
+      ],
+      "answer": "Qatar's economic outlook faces broadly balanced risks [1]. Key external downside risks include a sharper-than-expected global growth slowdown, increased volatility in global financial conditions and commodity prices, and worsening geopolitical tensions [1]. A regional conflict has had limited impact but poses further downside risks through potential lower tourism and capital inflows, and more volatile hydrocarbon prices [1]. Domestic downside risks primarily stem from weaknesses in the real esta",
+      "citations": [
+        "Page 9: TEXT",
+        "Page 13: TEXT",
+        "Page 5: FIGURE"
+      ],
+      "modality_match": true,
+      "keyword_score": 0.75,
+      "keywords_found": [
+        "economic",
+        "outlook",
+        "growth"
+      ],
+      "keywords_missing": [
+        "forecast"
+      ],
+      "passed": true
+    }
+  ]
+}
