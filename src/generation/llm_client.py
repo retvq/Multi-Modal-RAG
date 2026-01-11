@@ -71,7 +71,7 @@ OUTPUT FORMAT (JSON):
     "reasoning": "Brief internal note on how you derived the answer"
 }"""
 
-    def __init__(self, model_name: str = "gemini-2.5-flash"):
+    def __init__(self, model_name: str = "gemini-3-flash-preview"):
         """
         Initialize the Gemini client.
         

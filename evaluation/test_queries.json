@@ -38,11 +38,13 @@
   },
   {
     "id": "table_q1",
-    "query": "Show me Table 1",
+    "query": "What data is in the selected macroeconomic indicators table?",
     "expected_modality": "table",
     "expected_keywords": [
-      "table",
-      "data"
+      "GDP",
+      "inflation",
+      "percent",
+      "2024"
     ],
     "category": "table_lookup"
   },
@@ -51,9 +53,10 @@
     "query": "What are the values in the economic indicators table?",
     "expected_modality": "table",
     "expected_keywords": [
-      "indicator",
-      "value",
-      "percent"
+      "GDP",
+      "nominal",
+      "percent",
+      "billion"
     ],
     "category": "table_lookup"
   },
@@ -64,7 +67,7 @@
     "expected_keywords": [
       "fiscal",
       "balance",
-      "budget"
+      "percent"
     ],
     "category": "table_lookup"
   },
@@ -74,9 +77,9 @@
     "expected_modality": "figure",
     "expected_keywords": [
       "figure",
-      "sector",
-      "real",
-      "development"
+      "shows",
+      "GDP",
+      "sector"
     ],
     "category": "figure_lookup"
   },
@@ -86,9 +89,9 @@
     "expected_modality": "figure",
     "expected_keywords": [
       "GDP",
-      "real",
       "growth",
-      "percent"
+      "percent",
+      "year"
     ],
     "category": "figure_lookup"
   },

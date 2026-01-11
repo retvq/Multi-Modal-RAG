@@ -1,0 +1,464 @@
+{
+  "metadata": {
+    "timestamp": "2026-01-11T19:07:10.115556",
+    "total_queries": 10,
+    "use_llm": true,
+    "vector_store": "./outputs/vectordb"
+  },
+  "summary": {
+    "passed": 3,
+    "failed": 7,
+    "pass_rate": 0.3,
+    "avg_retrieval_ms": 84.21,
+    "avg_generation_ms": 1845.69,
+    "avg_total_ms": 1929.91,
+    "avg_keyword_score": 0.205
+  },
+  "modality_breakdown": {
+    "text": {
+      "total": 3,
+      "passed": 3,
+      "pass_rate": 1.0,
+      "avg_latency_ms": 4704.94,
+      "avg_keyword_score": 0.6833333333333332
+    },
+    "table": {
+      "total": 3,
+      "passed": 0,
+      "pass_rate": 0.0,
+      "avg_latency_ms": 1114.5200000000002,
+      "avg_keyword_score": 0.0
+    },
+    "figure": {
+      "total": 2,
+      "passed": 0,
+      "pass_rate": 0.0,
+      "avg_latency_ms": 460.49,
+      "avg_keyword_score": 0.0
+    },
+    "mixed": {
+      "total": 2,
+      "passed": 0,
+      "pass_rate": 0.0,
+      "avg_latency_ms": 459.845,
+      "avg_keyword_score": 0.0
+    }
+  },
+  "category_breakdown": {
+    "table_lookup": {
+      "total": 3,
+      "passed": 0,
+      "pass_rate": 0.0
+    },
+    "cross_modal": {
+      "total": 1,
+      "passed": 0,
+      "pass_rate": 0.0
+    },
+    "factual": {
+      "total": 1,
+      "passed": 1,
+      "pass_rate": 1.0
+    },
+    "summarization": {
+      "total": 1,
+      "passed": 0,
+      "pass_rate": 0.0
+    },
+    "figure_lookup": {
+      "total": 2,
+      "passed": 0,
+      "pass_rate": 0.0
+    },
+    "analytical": {
+      "total": 2,
+      "passed": 2,
+      "pass_rate": 1.0
+    }
+  },
+  "results": [
+    {
+      "query_id": "text_q1",
+      "query": "What is the GDP growth projection for Qatar?",
+      "category": "factual",
+      "expected_modality": "text",
+      "retrieval_time_ms": 96.26,
+      "generation_time_ms": 4361.4,
+      "total_time_ms": 4457.66,
+      "retrieved_modalities": [
+        "table",
+        "figure",
+        "text",
+        "text",
+        "table"
+      ],
+      "num_chunks": 5,
+      "top_scores": [
+        0.0317,
+        0.029,
+        0.0164
+      ],
+      "answer": "Real GDP growth for Qatar is projected to improve to 2 percent in 2024–25. Over the medium term, growth is expected to accelerate to an average of around 4¾ percent, driven by the North Field LNG production expansion and initial NDS3 reform gains [3].",
+      "citations": [
+        "Page 42: TABLE",
+        "Page 8: FIGURE",
+        "Page 39: TEXT"
+      ],
+      "modality_match": true,
+      "keyword_score": 0.75,
+      "keywords_found": [
+        "GDP",
+        "growth",
+        "percent"
+      ],
+      "keywords_missing": [
+        "%"
+      ],
+      "passed": true
+    },
+    {
+      "query_id": "text_q2",
+      "query": "What are the main drivers of economic growth?",
+      "category": "analytical",
+      "expected_modality": "text",
+      "retrieval_time_ms": 126.53,
+      "generation_time_ms": 4687.06,
+      "total_time_ms": 4813.59,
+      "retrieved_modalities": [
+        "text",
+        "figure",
+        "text",
+        "text",
+        "table"
+      ],
+      "num_chunks": 5,
+      "top_scores": [
+        0.0315,
+        0.0281,
+        0.0164
+      ],
+      "answer": "Economic growth has been driven by significant public infrastructure investment over the last decade, particularly in the non-hydrocarbon economy, which now accounts for about two-thirds of the total output [1]. The current growth model is state-driven, though it is noted to be costly [2]. Reform momentum, guided by the Third National Development Strategy (NDS3), has also strengthened, charting a new course for economic transformation [0, 1].",
+      "citations": [
+        "Page 5: TEXT",
+        "Page 8: FIGURE",
+        "Page 8: TEXT"
+      ],
+      "modality_match": true,
+      "keyword_score": 0.5,
+      "keywords_found": [
+        "hydrocarbon",
+        "investment"
+      ],
+      "keywords_missing": [
+        "energy",
+        "construction"
+      ],
+      "passed": true
+    },
+    {
+      "query_id": "text_q3",
+      "query": "What fiscal policy recommendations are mentioned?",
+      "category": "analytical",
+      "expected_modality": "text",
+      "retrieval_time_ms": 122.6,
+      "generation_time_ms": 4720.97,
+      "total_time_ms": 4843.57,
+      "retrieved_modalities": [
+        "text",
+        "text",
+        "text",
+        "text",
+        "text"
+      ],
+      "num_chunks": 5,
+      "top_scores": [
+        0.0325,
+        0.0325,
+        0.0308
+      ],
+      "answer": "Fiscal policy recommendations include sustaining fiscal discipline and accelerating revenue, expenditure, and fiscal institutional reforms [0]. Specific recommendations involve accelerating revenue diversification, such as introducing a value-added tax and broadening the corporate income tax [1]. It is also recommended to enhance spending efficiency, gradually align domestic energy prices with export prices, and reorient spending to enable private sector-driven growth [1]. Adopting a full-fledge",
+      "citations": [
+        "Page 14: TEXT",
+        "Page 5: TEXT",
+        "Page 6: TEXT"
+      ],
+      "modality_match": true,
+      "keyword_score": 0.8,
+      "keywords_found": [
+        "fiscal",
+        "policy",
+        "spending",
+        "revenue"
+      ],
+      "keywords_missing": [
+        "budget"
+      ],
+      "passed": true
+    },
+    {
+      "query_id": "table_q1",
+      "query": "Show me Table 1",
+      "category": "table_lookup",
+      "expected_modality": "table",
+      "retrieval_time_ms": 36.62,
+      "generation_time_ms": 2490.65,
+      "total_time_ms": 2527.27,
+      "retrieved_modalities": [
+        "text",
+        "table",
+        "text",
+        "table",
+        "text"
+      ],
+      "num_chunks": 5,
+      "top_scores": [
+        0.0164,
+        0.0164,
+        0.0161
+      ],
+      "answer": "The provided documents do not contain this information",
+      "citations": [
+        "Page 6: TEXT",
+        "Page 5: TABLE",
+        "Page 10: TEXT"
+      ],
+      "modality_match": true,
+      "keyword_score": 0.0,
+      "keywords_found": [],
+      "keywords_missing": [
+        "table",
+        "macroeconomic",
+        "indicators",
+        "GDP"
+      ],
+      "passed": false
+    },
+    {
+      "query_id": "table_q2",
+      "query": "What are the values in the economic indicators table?",
+      "category": "table_lookup",
+      "expected_modality": "table",
+      "retrieval_time_ms": 71.94,
+      "generation_time_ms": 320.8,
+      "total_time_ms": 392.74,
+      "retrieved_modalities": [
+        "text",
+        "table",
+        "table",
+        "text",
+        "text"
+      ],
+      "num_chunks": 5,
+      "top_scores": [
+        0.0164,
+        0.0164,
+        0.0164
+      ],
+      "answer": "Error generating response: 429 You exceeded your current quota, please check your plan and billing details. For more information on this error, head to: https://ai.google.dev/gemini-api/docs/rate-limits. To monitor your current usage, head to: https://ai.dev/rate-limit. \n* Quota exceeded for metric: generativelanguage.googleapis.com/generate_content_free_tier_requests, limit: 20, model: gemini-2.5-flash\nPlease retry in 47.284409303s. [links {\n  description: \"Learn more about Gemini API quotas\"\n ",
+      "citations": [
+        "Page 39: TEXT",
+        "Page 39: TABLE",
+        "Page 5: TABLE"
+      ],
+      "modality_match": true,
+      "keyword_score": 0.0,
+      "keywords_found": [],
+      "keywords_missing": [
+        "GDP",
+        "nominal",
+        "percent",
+        "billion"
+      ],
+      "passed": false
+    },
+    {
+      "query_id": "table_q3",
+      "query": "Show fiscal balance data from the tables",
+      "category": "table_lookup",
+      "expected_modality": "table",
+      "retrieval_time_ms": 67.12,
+      "generation_time_ms": 356.43,
+      "total_time_ms": 423.55,
+      "retrieved_modalities": [
+        "table",
+        "table",
+        "table",
+        "text",
+        "text"
+      ],
+      "num_chunks": 5,
+      "top_scores": [
+        0.0302,
+        0.0299,
+        0.0284
+      ],
+      "answer": "Error generating response: 429 You exceeded your current quota, please check your plan and billing details. For more information on this error, head to: https://ai.google.dev/gemini-api/docs/rate-limits. To monitor your current usage, head to: https://ai.dev/rate-limit. \n* Quota exceeded for metric: generativelanguage.googleapis.com/generate_content_free_tier_requests, limit: 20, model: gemini-2.5-flash\nPlease retry in 46.896475896s. [links {\n  description: \"Learn more about Gemini API quotas\"\n ",
+      "citations": [
+        "Page 8: TABLE",
+        "Page 42: TABLE",
+        "Page 14: TABLE"
+      ],
+      "modality_match": true,
+      "keyword_score": 0.0,
+      "keywords_found": [],
+      "keywords_missing": [
+        "fiscal",
+        "balance",
+        "percent"
+      ],
+      "passed": false
+    },
+    {
+      "query_id": "figure_q1",
+      "query": "What does Figure 1 show?",
+      "category": "figure_lookup",
+      "expected_modality": "figure",
+      "retrieval_time_ms": 33.5,
+      "generation_time_ms": 375.54,
+      "total_time_ms": 409.04,
+      "retrieved_modalities": [
+        "text",
+        "figure",
+        "text",
+        "figure",
+        "text"
+      ],
+      "num_chunks": 5,
+      "top_scores": [
+        0.0164,
+        0.0164,
+        0.0161
+      ],
+      "answer": "Error generating response: 429 You exceeded your current quota, please check your plan and billing details. For more information on this error, head to: https://ai.google.dev/gemini-api/docs/rate-limits. To monitor your current usage, head to: https://ai.dev/rate-limit. \n* Quota exceeded for metric: generativelanguage.googleapis.com/generate_content_free_tier_requests, limit: 20, model: gemini-2.5-flash\nPlease retry in 46.507788811s. [links {\n  description: \"Learn more about Gemini API quotas\"\n ",
+      "citations": [
+        "Page 6: TEXT",
+        "Page 5: FIGURE",
+        "Page 8: TEXT"
+      ],
+      "modality_match": true,
+      "keyword_score": 0.0,
+      "keywords_found": [],
+      "keywords_missing": [
+        "figure",
+        "shows",
+        "GDP",
+        "sector"
+      ],
+      "passed": false
+    },
+    {
+      "query_id": "figure_q2",
+      "query": "Describe the GDP trend chart",
+      "category": "figure_lookup",
+      "expected_modality": "figure",
+      "retrieval_time_ms": 126.0,
+      "generation_time_ms": 385.94,
+      "total_time_ms": 511.94,
+      "retrieved_modalities": [
+        "figure",
+        "figure",
+        "text",
+        "text",
+        "figure"
+      ],
+      "num_chunks": 5,
+      "top_scores": [
+        0.0323,
+        0.0317,
+        0.0164
+      ],
+      "answer": "Error generating response: 429 You exceeded your current quota, please check your plan and billing details. For more information on this error, head to: https://ai.google.dev/gemini-api/docs/rate-limits. To monitor your current usage, head to: https://ai.dev/rate-limit. \n* Quota exceeded for metric: generativelanguage.googleapis.com/generate_content_free_tier_requests, limit: 20, model: gemini-2.5-flash\nPlease retry in 46.000858041s. [links {\n  description: \"Learn more about Gemini API quotas\"\n ",
+      "citations": [
+        "Page 8: FIGURE",
+        "Page 8: FIGURE",
+        "Page 39: TEXT"
+      ],
+      "modality_match": true,
+      "keyword_score": 0.0,
+      "keywords_found": [],
+      "keywords_missing": [
+        "GDP",
+        "growth",
+        "percent",
+        "year"
+      ],
+      "passed": false
+    },
+    {
+      "query_id": "mixed_q1",
+      "query": "Compare GDP projections mentioned in text with those in Table 1",
+      "category": "cross_modal",
+      "expected_modality": "mixed",
+      "retrieval_time_ms": 41.61,
+      "generation_time_ms": 367.84,
+      "total_time_ms": 409.45,
+      "retrieved_modalities": [
+        "text",
+        "table",
+        "text",
+        "table",
+        "text"
+      ],
+      "num_chunks": 5,
+      "top_scores": [
+        0.0164,
+        0.0164,
+        0.0161
+      ],
+      "answer": "Error generating response: 429 You exceeded your current quota, please check your plan and billing details. For more information on this error, head to: https://ai.google.dev/gemini-api/docs/rate-limits. To monitor your current usage, head to: https://ai.dev/rate-limit. \n* Quota exceeded for metric: generativelanguage.googleapis.com/generate_content_free_tier_requests, limit: 20, model: gemini-2.5-flash\nPlease retry in 45.570838012s. [links {\n  description: \"Learn more about Gemini API quotas\"\n ",
+      "citations": [
+        "Page 9: TEXT",
+        "Page 5: TABLE",
+        "Page 10: TEXT"
+      ],
+      "modality_match": true,
+      "keyword_score": 0.0,
+      "keywords_found": [],
+      "keywords_missing": [
+        "GDP",
+        "projection",
+        "table",
+        "percent"
+      ],
+      "passed": false
+    },
+    {
+      "query_id": "mixed_q2",
+      "query": "Summarize the key economic outlook from text and figures",
+      "category": "summarization",
+      "expected_modality": "mixed",
+      "retrieval_time_ms": 119.94,
+      "generation_time_ms": 390.3,
+      "total_time_ms": 510.24,
+      "retrieved_modalities": [
+        "text",
+        "text",
+        "figure",
+        "text",
+        "text"
+      ],
+      "num_chunks": 5,
+      "top_scores": [
+        0.0164,
+        0.0164,
+        0.0164
+      ],
+      "answer": "Error generating response: 429 You exceeded your current quota, please check your plan and billing details. For more information on this error, head to: https://ai.google.dev/gemini-api/docs/rate-limits. To monitor your current usage, head to: https://ai.dev/rate-limit. \n* Quota exceeded for metric: generativelanguage.googleapis.com/generate_content_free_tier_requests, limit: 20, model: gemini-2.5-flash\nPlease retry in 45.082536818s. [links {\n  description: \"Learn more about Gemini API quotas\"\n ",
+      "citations": [
+        "Page 9: TEXT",
+        "Page 13: TEXT",
+        "Page 5: FIGURE"
+      ],
+      "modality_match": true,
+      "keyword_score": 0.0,
+      "keywords_found": [],
+      "keywords_missing": [
+        "economic",
+        "outlook",
+        "growth",
+        "forecast"
+      ],
+      "passed": false
+    }
+  ]
+}
