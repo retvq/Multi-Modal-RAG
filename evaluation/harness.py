@@ -198,6 +198,10 @@ class EvaluationHarness:
                 status = "[PASS]" if result.passed else "[FAIL]"
                 print(f"         {status} | {result.total_time_ms:.0f}ms | Keywords: {result.keyword_score:.0%}")
                 
+                # Rate limit protection: Sleep 2s between queries
+                time.sleep(2)
+
+                
             except Exception as e:
                 print(f"         [ERROR] {e}")
                 # Create failed result

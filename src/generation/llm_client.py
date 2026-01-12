@@ -146,19 +146,36 @@ Generate a grounded answer using ONLY the context above. Output valid JSON."""
             # Parse JSON response
             response_text = response.text.strip()
             
-            # Handle potential markdown code blocks
-            if response_text.startswith("```"):
-                response_text = re.sub(r'^```json?\n?', '', response_text)
-                response_text = re.sub(r'\n?```$', '', response_text)
-            
-            parsed = json.loads(response_text)
-            
-            return LLMResponse(
-                answer_text=parsed.get("answer", ""),
-                cited_chunks=parsed.get("cited_chunks", []),
-                confidence=parsed.get("confidence", "medium"),
-                reasoning=parsed.get("reasoning"),
-            )
+            # Robust JSON extraction: Find first '{' and last '}'
+            try:
+                start_idx = response_text.find('{')
+                end_idx = response_text.rfind('}')
+                
+                if start_idx != -1 and end_idx != -1:
+                    response_text = response_text[start_idx : end_idx + 1]
+                
+                parsed = json.loads(response_text)
+                
+                return LLMResponse(
+                    answer_text=parsed.get("answer", ""),
+                    cited_chunks=parsed.get("cited_chunks", []),
+                    confidence=parsed.get("confidence", "medium"),
+                    reasoning=parsed.get("reasoning"),
+                )
+            except json.JSONDecodeError as e:
+                # If extraction failed, try stripping markdown as fallback
+                clean_text = re.sub(r'^```json?\n?', '', response.text.strip())
+                clean_text = re.sub(r'\n?```$', '', clean_text)
+                try:
+                    parsed = json.loads(clean_text)
+                    return LLMResponse(
+                        answer_text=parsed.get("answer", ""),
+                        cited_chunks=parsed.get("cited_chunks", []),
+                        confidence=parsed.get("confidence", "medium"),
+                        reasoning=parsed.get("reasoning"),
+                    )
+                except json.JSONDecodeError:
+                    raise e
             
         except json.JSONDecodeError as e:
             # Fallback: Return raw text if JSON parsing fails
