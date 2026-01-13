@@ -883,7 +883,7 @@ class AnswerGenerator:
     - use_llm=True: LLM-powered generation via Gemini (more natural, flexible)
     """
     
-    def __init__(self, use_llm: bool = False, llm_client=None):
+    def __init__(self, use_llm: bool = False, llm_client=None, api_key: str = None):
         self.use_llm = use_llm
         self.llm_client = llm_client
         
@@ -891,7 +891,7 @@ class AnswerGenerator:
         if self.use_llm and self.llm_client is None:
             try:
                 from src.generation.llm_client import GeminiClient
-                self.llm_client = GeminiClient()
+                self.llm_client = GeminiClient(api_key=api_key)
                 self._llm_available = True
             except Exception as e:
                 print(f"Warning: LLM client failed to initialize: {e}")

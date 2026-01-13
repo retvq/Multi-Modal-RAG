@@ -71,17 +71,19 @@ OUTPUT FORMAT (JSON):
     "reasoning": "Brief internal note on how you derived the answer"
 }"""
 
-    def __init__(self, model_name: str = "gemini-3-flash-preview"):
+    def __init__(self, model_name: str = "gemini-1.5-flash", api_key: str = None):
         """
         Initialize the Gemini client.
         
         Args:
             model_name: Model to use. Options:
-                - "gemini-2.5-flash": Fast, cost-effective (recommended)
+                - "gemini-1.5-flash": Fast, high limits (recommended)
                 - "gemini-3-flash": Latest flash model
-                - "gemini-2.5-flash-lite": Lightweight option
+            api_key: Optional API key override
         """
-        api_key = os.environ.get("GOOGLE_API_KEY")
+        if not api_key:
+            api_key = os.environ.get("GOOGLE_API_KEY")
+            
         if not api_key:
             raise ValueError(
                 "GOOGLE_API_KEY environment variable not set. "

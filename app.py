@@ -18,6 +18,7 @@ import time
 import json
 import uuid
 import shutil
+import os  # Added for env var manipulation
 from pathlib import Path
 import sys
 
@@ -29,6 +30,27 @@ sys.path.insert(0, str(project_root / "src"))
 from src.retrieval.pipeline import RetrievalPipeline
 from src.generation.generator import AnswerGenerator, classify_intent
 
+
+# =============================================================================
+# PAGE CONFIG
+# =============================================================================
+# ... (intermediate lines skipped)
+@st.cache_resource
+def load_rag_system(use_llm: bool = True, collection_name: str = "chunks", vector_store_path: str = "./outputs/vectordb", api_key: str = None):
+    """Load and cache the RAG system components."""
+    
+    # Ensure demo is initialized if using default collection
+    if collection_name == "chunks":
+        initialize_demo()
+        
+    retrieval = RetrievalPipeline(
+        vector_store_path=vector_store_path,
+        use_mock=False,
+        collection_name=collection_name
+    )
+    # Pass api_key to generator if provided
+    generator = AnswerGenerator(use_llm=use_llm, api_key=api_key)
+    return retrieval, generator
 
 # =============================================================================
 # PAGE CONFIG
@@ -648,6 +670,28 @@ with st.sidebar:
     
     st.divider()
     
+    # API Key Management
+    st.markdown("### API Access")
+    user_api_key = st.text_input(
+        "Gemini API Key",
+        type="password",
+        help="Enter your own Google API key to avoid rate limits or exhaustion. Leave empty to use system default (if available).",
+        placeholder="AIzaSy..."
+    )
+    
+    if user_api_key:
+        os.environ["GOOGLE_API_KEY"] = user_api_key
+        # Verify key works
+        try:
+            import google.generativeai as genai
+            genai.configure(api_key=user_api_key)
+            genai.GenerativeModel("gemini-1.5-flash").generate_content("test")
+            st.success("API Key Verified!")
+        except Exception:
+            st.error("Invalid API Key")
+
+    st.divider()
+    
     # System status
     st.markdown("### System Status")
     
@@ -663,7 +707,8 @@ with st.sidebar:
         retrieval, generator = load_rag_system(
             use_llm=use_llm,
             collection_name=collection_name,
-            vector_store_path=vector_store_path
+            vector_store_path=vector_store_path,
+            api_key=user_api_key if user_api_key else None
         )
         chunk_count = len(retrieval.keyword_index)
         
