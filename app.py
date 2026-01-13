@@ -685,7 +685,7 @@ with st.sidebar:
         try:
             import google.generativeai as genai
             genai.configure(api_key=user_api_key)
-            genai.GenerativeModel("gemini-1.5-flash").generate_content("test")
+            genai.GenerativeModel("gemini-2.0-flash-exp").generate_content("test")
             st.success("API Key Verified!")
         except Exception:
             st.error("Invalid API Key")

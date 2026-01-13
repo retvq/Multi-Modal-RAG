@@ -71,14 +71,14 @@ OUTPUT FORMAT (JSON):
     "reasoning": "Brief internal note on how you derived the answer"
 }"""
 
-    def __init__(self, model_name: str = "gemini-1.5-flash", api_key: str = None):
+    def __init__(self, model_name: str = "gemini-2.0-flash-exp", api_key: str = None):
         """
         Initialize the Gemini client.
         
         Args:
             model_name: Model to use. Options:
-                - "gemini-1.5-flash": Fast, high limits (recommended)
-                - "gemini-3-flash": Latest flash model
+                - "gemini-2.0-flash-exp": Fast, high limits (recommended)
+                - "gemini-1.5-pro": More capable but slower
             api_key: Optional API key override
         """
         if not api_key:
