@@ -1,0 +1,458 @@
+{
+  "metadata": {
+    "timestamp": "2026-01-13T16:58:02.932544",
+    "total_queries": 10,
+    "use_llm": true,
+    "vector_store": "./outputs/user_43bac21b/vectordb"
+  },
+  "summary": {
+    "passed": 0,
+    "failed": 10,
+    "pass_rate": 0.0,
+    "avg_retrieval_ms": 55.67,
+    "avg_generation_ms": 539.46,
+    "avg_total_ms": 595.14,
+    "avg_keyword_score": 0.125
+  },
+  "modality_breakdown": {
+    "text": {
+      "total": 3,
+      "passed": 0,
+      "pass_rate": 0.0,
+      "avg_latency_ms": 625.25,
+      "avg_keyword_score": 0.0
+    },
+    "table": {
+      "total": 3,
+      "passed": 0,
+      "pass_rate": 0.0,
+      "avg_latency_ms": 590.11,
+      "avg_keyword_score": 0.0
+    },
+    "figure": {
+      "total": 2,
+      "passed": 0,
+      "pass_rate": 0.0,
+      "avg_latency_ms": 488.875,
+      "avg_keyword_score": 0.0
+    },
+    "mixed": {
+      "total": 2,
+      "passed": 0,
+      "pass_rate": 0.0,
+      "avg_latency_ms": 663.775,
+      "avg_keyword_score": 0.625
+    }
+  },
+  "category_breakdown": {
+    "figure_lookup": {
+      "total": 2,
+      "passed": 0,
+      "pass_rate": 0.0
+    },
+    "cross_modal": {
+      "total": 1,
+      "passed": 0,
+      "pass_rate": 0.0
+    },
+    "summarization": {
+      "total": 1,
+      "passed": 0,
+      "pass_rate": 0.0
+    },
+    "table_lookup": {
+      "total": 3,
+      "passed": 0,
+      "pass_rate": 0.0
+    },
+    "factual": {
+      "total": 1,
+      "passed": 0,
+      "pass_rate": 0.0
+    },
+    "analytical": {
+      "total": 2,
+      "passed": 0,
+      "pass_rate": 0.0
+    }
+  },
+  "results": [
+    {
+      "query_id": "text_q1",
+      "query": "What is the GDP growth projection for Qatar?",
+      "category": "factual",
+      "expected_modality": "text",
+      "retrieval_time_ms": 82.09,
+      "generation_time_ms": 778.02,
+      "total_time_ms": 860.1,
+      "retrieved_modalities": [
+        "text",
+        "text",
+        "text",
+        "text",
+        "text"
+      ],
+      "num_chunks": 5,
+      "top_scores": [
+        0.031,
+        0.0309,
+        0.0304
+      ],
+      "answer": "The provided documents do not contain this information",
+      "citations": [
+        "Page 1: TEXT",
+        "Page 1: TEXT",
+        "Page 1: TEXT"
+      ],
+      "modality_match": true,
+      "keyword_score": 0.0,
+      "keywords_found": [],
+      "keywords_missing": [
+        "GDP",
+        "growth",
+        "percent",
+        "%"
+      ],
+      "passed": false
+    },
+    {
+      "query_id": "text_q2",
+      "query": "What are the main drivers of economic growth?",
+      "category": "analytical",
+      "expected_modality": "text",
+      "retrieval_time_ms": 57.7,
+      "generation_time_ms": 443.3,
+      "total_time_ms": 501.0,
+      "retrieved_modalities": [
+        "text",
+        "text",
+        "text",
+        "text",
+        "text"
+      ],
+      "num_chunks": 5,
+      "top_scores": [
+        0.0313,
+        0.0308,
+        0.0308
+      ],
+      "answer": "The provided documents do not contain this information",
+      "citations": [
+        "Page 1: TEXT",
+        "Page 1: TEXT",
+        "Page 1: TEXT"
+      ],
+      "modality_match": true,
+      "keyword_score": 0.0,
+      "keywords_found": [],
+      "keywords_missing": [
+        "hydrocarbon",
+        "energy",
+        "investment",
+        "construction"
+      ],
+      "passed": false
+    },
+    {
+      "query_id": "text_q3",
+      "query": "What fiscal policy recommendations are mentioned?",
+      "category": "analytical",
+      "expected_modality": "text",
+      "retrieval_time_ms": 52.75,
+      "generation_time_ms": 461.9,
+      "total_time_ms": 514.65,
+      "retrieved_modalities": [
+        "text",
+        "text",
+        "text",
+        "text",
+        "text"
+      ],
+      "num_chunks": 5,
+      "top_scores": [
+        0.0308,
+        0.0304,
+        0.0299
+      ],
+      "answer": "The provided documents do not contain this information",
+      "citations": [
+        "Page 1: TEXT",
+        "Page 1: TEXT",
+        "Page 1: TEXT"
+      ],
+      "modality_match": true,
+      "keyword_score": 0.0,
+      "keywords_found": [],
+      "keywords_missing": [
+        "fiscal",
+        "policy",
+        "budget",
+        "spending",
+        "revenue"
+      ],
+      "passed": false
+    },
+    {
+      "query_id": "table_q1",
+      "query": "What data is in the selected macroeconomic indicators table?",
+      "category": "table_lookup",
+      "expected_modality": "table",
+      "retrieval_time_ms": 45.72,
+      "generation_time_ms": 469.63,
+      "total_time_ms": 515.35,
+      "retrieved_modalities": [
+        "text",
+        "text",
+        "text",
+        "text",
+        "text"
+      ],
+      "num_chunks": 5,
+      "top_scores": [
+        0.0318,
+        0.0306,
+        0.0305
+      ],
+      "answer": "The provided documents do not contain this information",
+      "citations": [
+        "Page 1: TEXT",
+        "Page 1: TEXT",
+        "Page 1: TEXT"
+      ],
+      "modality_match": false,
+      "keyword_score": 0.0,
+      "keywords_found": [],
+      "keywords_missing": [
+        "GDP",
+        "inflation",
+        "percent",
+        "2024"
+      ],
+      "passed": false
+    },
+    {
+      "query_id": "table_q2",
+      "query": "What are the values in the economic indicators table?",
+      "category": "table_lookup",
+      "expected_modality": "table",
+      "retrieval_time_ms": 43.25,
+      "generation_time_ms": 716.54,
+      "total_time_ms": 759.8,
+      "retrieved_modalities": [
+        "text",
+        "text",
+        "text",
+        "text",
+        "text"
+      ],
+      "num_chunks": 5,
+      "top_scores": [
+        0.0312,
+        0.0304,
+        0.0301
+      ],
+      "answer": "The provided documents do not contain this information",
+      "citations": [
+        "Page 1: TEXT",
+        "Page 1: TEXT",
+        "Page 1: TEXT"
+      ],
+      "modality_match": false,
+      "keyword_score": 0.0,
+      "keywords_found": [],
+      "keywords_missing": [
+        "GDP",
+        "nominal",
+        "percent",
+        "billion"
+      ],
+      "passed": false
+    },
+    {
+      "query_id": "table_q3",
+      "query": "Show fiscal balance data from the tables",
+      "category": "table_lookup",
+      "expected_modality": "table",
+      "retrieval_time_ms": 43.38,
+      "generation_time_ms": 451.8,
+      "total_time_ms": 495.18,
+      "retrieved_modalities": [
+        "text",
+        "text",
+        "text",
+        "text",
+        "text"
+      ],
+      "num_chunks": 5,
+      "top_scores": [
+        0.032,
+        0.0306,
+        0.0305
+      ],
+      "answer": "The provided documents do not contain this information",
+      "citations": [
+        "Page 1: TEXT",
+        "Page 2: TEXT",
+        "Page 1: TEXT"
+      ],
+      "modality_match": false,
+      "keyword_score": 0.0,
+      "keywords_found": [],
+      "keywords_missing": [
+        "fiscal",
+        "balance",
+        "percent"
+      ],
+      "passed": false
+    },
+    {
+      "query_id": "figure_q1",
+      "query": "What does Figure 1 show?",
+      "category": "figure_lookup",
+      "expected_modality": "figure",
+      "retrieval_time_ms": 41.75,
+      "generation_time_ms": 370.6,
+      "total_time_ms": 412.35,
+      "retrieved_modalities": [
+        "text",
+        "text"
+      ],
+      "num_chunks": 2,
+      "top_scores": [
+        0.0164,
+        0.0161
+      ],
+      "answer": "The provided documents do not contain this information",
+      "citations": [
+        "Page 1: TEXT",
+        "Page 1: TEXT"
+      ],
+      "modality_match": false,
+      "keyword_score": 0.0,
+      "keywords_found": [],
+      "keywords_missing": [
+        "figure",
+        "shows",
+        "GDP",
+        "sector"
+      ],
+      "passed": false
+    },
+    {
+      "query_id": "figure_q2",
+      "query": "Describe the GDP trend chart",
+      "category": "figure_lookup",
+      "expected_modality": "figure",
+      "retrieval_time_ms": 49.02,
+      "generation_time_ms": 516.38,
+      "total_time_ms": 565.4,
+      "retrieved_modalities": [
+        "text",
+        "text",
+        "text",
+        "text",
+        "text"
+      ],
+      "num_chunks": 5,
+      "top_scores": [
+        0.0318,
+        0.0301,
+        0.0292
+      ],
+      "answer": "The provided documents do not contain this information",
+      "citations": [
+        "Page 1: TEXT",
+        "Page 1: TEXT",
+        "Page 1: TEXT"
+      ],
+      "modality_match": false,
+      "keyword_score": 0.0,
+      "keywords_found": [],
+      "keywords_missing": [
+        "GDP",
+        "growth",
+        "percent",
+        "year"
+      ],
+      "passed": false
+    },
+    {
+      "query_id": "mixed_q1",
+      "query": "Compare GDP projections mentioned in text with those in Table 1",
+      "category": "cross_modal",
+      "expected_modality": "mixed",
+      "retrieval_time_ms": 69.5,
+      "generation_time_ms": 544.12,
+      "total_time_ms": 613.62,
+      "retrieved_modalities": [
+        "text",
+        "text",
+        "text",
+        "text",
+        "text"
+      ],
+      "num_chunks": 5,
+      "top_scores": [
+        0.0164,
+        0.0161,
+        0.0159
+      ],
+      "answer": "The provided documents do not contain this information. There is no mention of GDP projections in the text or any tables.",
+      "citations": [
+        "Page 1: TEXT",
+        "Page 1: TEXT",
+        "Page 1: TEXT"
+      ],
+      "modality_match": false,
+      "keyword_score": 0.75,
+      "keywords_found": [
+        "GDP",
+        "projection",
+        "table"
+      ],
+      "keywords_missing": [
+        "percent"
+      ],
+      "passed": false
+    },
+    {
+      "query_id": "mixed_q2",
+      "query": "Summarize the key economic outlook from text and figures",
+      "category": "summarization",
+      "expected_modality": "mixed",
+      "retrieval_time_ms": 71.59,
+      "generation_time_ms": 642.34,
+      "total_time_ms": 713.93,
+      "retrieved_modalities": [
+        "text",
+        "text",
+        "text",
+        "text",
+        "text"
+      ],
+      "num_chunks": 5,
+      "top_scores": [
+        0.0305,
+        0.0304,
+        0.0302
+      ],
+      "answer": "The provided documents do not contain this information. The context only discusses a job application for a Software Engineer position and the applicant's skills and experience, with no mention of economic outlook or figures.",
+      "citations": [
+        "Page 1: TEXT",
+        "Page 1: TEXT",
+        "Page 2: TEXT"
+      ],
+      "modality_match": false,
+      "keyword_score": 0.5,
+      "keywords_found": [
+        "economic",
+        "outlook"
+      ],
+      "keywords_missing": [
+        "growth",
+        "forecast"
+      ],
+      "passed": false
+    }
+  ]
+}

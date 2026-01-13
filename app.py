@@ -767,12 +767,16 @@ with st.sidebar:
             st.markdown(f"- {mod}: {count}")
         
         if use_llm:
-            if generator._llm_available:
+            if generator._llm_available and generator._groq_available:
+                st.markdown("**LLM:** Gemini (Groq fallback ready)")
+            elif generator._llm_available:
                 st.markdown("**LLM:** Gemini")
+            elif generator._groq_available:
+                st.markdown("**LLM:** Groq (primary)")
             else:
                 st.warning("LLM unavailable, using rule-based")
         else:
-            st.markdown("**LLM:** Disabled")
+            st.markdown("**LLM:** Disabled (rule-based)")
             
     except Exception as e:
         st.error(f"System Error: {e}")
