@@ -224,17 +224,21 @@ class VectorStore:
         """
         Add vectors to the store.
         """
-        if self._use_json:
-            for i, chunk_id in enumerate(ids):
-                self._json_data["embeddings"].append({
-                    "id": chunk_id,
-                    "vector": embeddings[i],
-                    "metadata": metadatas[i],
-                    "document": documents[i]
-                })
-            with open(self._json_path, "w") as f:
-                json.dump(self._json_data, f)
-        else:
+        # Build JSON data for keyword index (always needed for RetrievalPipeline)
+        for i, chunk_id in enumerate(ids):
+            self._json_data["embeddings"].append({
+                "id": chunk_id,
+                "vector": embeddings[i],
+                "metadata": metadatas[i],
+                "document": documents[i]
+            })
+        
+        # Always write JSON for keyword search compatibility
+        with open(self._json_path, "w") as f:
+            json.dump(self._json_data, f)
+        
+        # Also use ChromaDB if available for vector search
+        if not self._use_json:
             self._collection.add(
                 ids=ids,
                 embeddings=embeddings,
