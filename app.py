@@ -411,128 +411,160 @@ def format_table_answer(text: str, intent: str) -> str:
     """
     Format table answers with proper HTML table layout.
     
-    Detects table-like content (markdown tables or year-based data) and converts to styled HTML table.
+    Handles multiple formats:
+    1. Markdown tables (| col1 | col2 |)
+    2. Year-based data (2020, 2021, 2022...)
+    3. Bold indicator: value format (**GDP:** 2.4%)
+    4. Bullet point lists with values
     """
     import re
-    import pandas as pd
     
-    # Check if this is a markdown table (pipes in content)
+    if not text or len(text) < 10:
+        return text
+    
+    # =================================================================
+    # Strategy 1: Markdown tables (pipes)
+    # =================================================================
     if '|' in text and text.count('|') >= 4:
         try:
-            # Parse markdown table
             lines = [l.strip() for l in text.strip().split('\n') if l.strip()]
-            table_lines = [l for l in lines if '|' in l and not l.startswith('|-') and not re.match(r'^\|[-:| ]+\|$', l)]
+            # Filter out separator lines (|---|---|)
+            table_lines = [l for l in lines if '|' in l 
+                          and not re.match(r'^[\|\-\:\s]+$', l.replace(' ', ''))]
             
             if len(table_lines) >= 2:
-                # Extract header and data
                 def parse_row(line):
                     cells = [c.strip() for c in line.split('|')]
-                    return [c for c in cells if c]  # Remove empty strings
+                    return [c for c in cells if c]
                 
                 header = parse_row(table_lines[0])
                 data_rows = [parse_row(l) for l in table_lines[1:] if parse_row(l)]
                 
                 if header and data_rows:
-                    # Build HTML table with styling
-                    table_html = ['<table style="width:100%; border-collapse: collapse; margin: 10px 0; font-size: 0.9rem;">']
-                    
-                    # Header row
-                    table_html.append('<thead><tr style="background: rgba(0, 131, 143, 0.15);">')
-                    for h in header:
-                        table_html.append(f'<th style="padding: 10px; text-align: left; border-bottom: 2px solid rgba(0, 131, 143, 0.4); font-weight: 600;">{h}</th>')
-                    table_html.append('</tr></thead>')
-                    
-                    # Data rows
-                    table_html.append('<tbody>')
-                    for i, row in enumerate(data_rows):
-                        bg = 'rgba(0, 131, 143, 0.03)' if i % 2 == 0 else 'rgba(0, 131, 143, 0.08)'
-                        table_html.append(f'<tr style="background: {bg};">')
-                        for j, cell in enumerate(row):
-                            align = 'left' if j == 0 else 'right'
-                            table_html.append(f'<td style="padding: 10px; text-align: {align}; border-bottom: 1px solid rgba(0, 131, 143, 0.15);">{cell}</td>')
-                        table_html.append('</tr>')
-                    table_html.append('</tbody></table>')
-                    
-                    # Return any text before the table + the formatted table
-                    pre_table = text.split('|')[0].strip()
-                    if pre_table and len(pre_table) > 10:
-                        return f"<p>{pre_table}</p>" + '\n'.join(table_html)
-                    return '\n'.join(table_html)
+                    return _build_html_table(header, data_rows)
         except Exception:
-            pass  # Fall through to other methods
+            pass
     
-    # Check if this looks like year-based table content
-    if intent != "table_lookup" and "table" not in text.lower()[:100]:
-        return text
+    # =================================================================
+    # Strategy 2: Bold indicator format (**Label:** value OR **Label** value)
+    # =================================================================
+    bold_pattern = r'\*\*([^*]+)\*\*[:\s]+([^\n*]+)'
+    bold_matches = re.findall(bold_pattern, text)
     
-    lines = text.strip().split('\n')
-    if len(lines) < 2:
-        return text
-    
-    # Try to detect table structure with years
-    html_parts = []
-    table_started = False
-    header_row = None
-    data_rows = []
-    
-    for line in lines:
-        line = line.strip()
-        if not line:
-            continue
+    if len(bold_matches) >= 2:
+        # Convert to table
+        header = ['Indicator', 'Value']
+        data_rows = [[m[0].strip(), m[1].strip()] for m in bold_matches]
         
-        # Look for year patterns that indicate header row
+        # Add any intro text before the table
+        pre_table = re.split(r'\*\*', text)[0].strip()
+        table_html = _build_html_table(header, data_rows)
+        
+        if pre_table and len(pre_table) > 15:
+            return f"<p>{pre_table}</p>{table_html}"
+        return table_html
+    
+    # =================================================================
+    # Strategy 3: Year-based data (look for 2020, 2021, etc.)
+    # =================================================================
+    if intent == "table_lookup" or "table" in text.lower()[:100]:
+        lines = text.strip().split('\n')
         year_pattern = r'\b(20\d{2})\b'
-        years = re.findall(year_pattern, line)
         
-        if len(years) >= 3 and not table_started:
-            header_row = years
-            table_started = True
-            continue
+        header_row = None
+        data_rows = []
+        html_parts = []
         
-        if table_started and header_row:
-            num_pattern = r'(-?\d+\.?\d*)'
-            values = re.findall(num_pattern, line)
+        for line in lines:
+            line = line.strip()
+            if not line:
+                continue
             
-            if len(values) >= len(header_row):
-                label_match = re.match(r'^(.*?)(?=\s*-?\d)', line)
-                if label_match:
-                    label = label_match.group(1).strip()
-                    label = re.sub(r'\*+', '', label).strip()
+            years = re.findall(year_pattern, line)
+            
+            if len(years) >= 3 and not header_row:
+                header_row = years
+                continue
+            
+            if header_row:
+                num_pattern = r'(-?\d+\.?\d*)'
+                values = re.findall(num_pattern, line)
+                
+                if len(values) >= len(header_row):
+                    label_match = re.match(r'^(.*?)(?=\s*-?\d)', line)
+                    if label_match:
+                        label = label_match.group(1).strip()
+                        label = re.sub(r'\*+', '', label).strip()
+                    else:
+                        label = line[:40]
+                    
+                    if not label or len(label) < 2:
+                        label = "Value"
+                    
+                    row_values = values[-len(header_row):]
+                    data_rows.append([label] + row_values)
                 else:
-                    label = re.split(r'[|,]', line)[0].strip()[:40]
-                
-                if not label or len(label) < 2:
-                    label = "Data Row"
-                
-                row_values = values[-len(header_row):]
-                data_rows.append((label, row_values))
+                    html_parts.append(f"<p><strong>{line}</strong></p>")
             else:
-                html_parts.append(f"<p><strong>{line}</strong></p>")
-        elif not table_started:
-            html_parts.append(f"<p>{line}</p>")
+                html_parts.append(f"<p>{line}</p>")
+        
+        if header_row and data_rows:
+            header = ['Indicator'] + header_row
+            table_html = _build_html_table(header, data_rows)
+            return '\n'.join(html_parts) + '\n' + table_html
     
-    if header_row and data_rows:
-        table_html = ['<table style="width:100%; border-collapse: collapse; margin: 10px 0; font-size: 0.9rem;">']
-        
-        table_html.append('<thead><tr style="background: rgba(0, 131, 143, 0.15);">')
-        table_html.append('<th style="padding: 10px; text-align: left; border-bottom: 2px solid rgba(0, 131, 143, 0.4); font-weight: 600;">Indicator</th>')
-        for year in header_row:
-            table_html.append(f'<th style="padding: 10px; text-align: right; border-bottom: 2px solid rgba(0, 131, 143, 0.4); font-weight: 600;">{year}</th>')
-        table_html.append('</tr></thead>')
-        
-        table_html.append('<tbody>')
-        for i, (label, values) in enumerate(data_rows):
-            bg = 'rgba(0, 131, 143, 0.03)' if i % 2 == 0 else 'rgba(0, 131, 143, 0.08)'
-            table_html.append(f'<tr style="background: {bg};">')
-            table_html.append(f'<td style="padding: 10px; border-bottom: 1px solid rgba(0, 131, 143, 0.15);">{label}</td>')
-            for val in values:
-                table_html.append(f'<td style="padding: 10px; text-align: right; border-bottom: 1px solid rgba(0, 131, 143, 0.15);">{val}</td>')
-            table_html.append('</tr>')
-        table_html.append('</tbody></table>')
-        
-        return '\n'.join(html_parts) + '\n' + '\n'.join(table_html)
+    # =================================================================
+    # Strategy 4: Bullet/numbered lists with values
+    # =================================================================
+    list_pattern = r'^[\-\*\d\.]+\s*\**([^:*]+)\**[:\s]+(.+)$'
+    list_matches = []
+    other_lines = []
     
+    for line in text.strip().split('\n'):
+        match = re.match(list_pattern, line.strip())
+        if match:
+            list_matches.append([match.group(1).strip(), match.group(2).strip()])
+        else:
+            other_lines.append(line)
+    
+    if len(list_matches) >= 3:
+        header = ['Item', 'Details']
+        table_html = _build_html_table(header, list_matches)
+        
+        if other_lines:
+            pre_text = '\n'.join(other_lines[:2]).strip()
+            if pre_text and len(pre_text) > 10:
+                return f"<p>{pre_text}</p>{table_html}"
+        return table_html
+    
+    # Default: return original text
     return text
+
+
+def _build_html_table(header: list, data_rows: list) -> str:
+    """Build styled HTML table from header and data rows."""
+    table_html = ['<table style="width:100%; border-collapse: collapse; margin: 10px 0; font-size: 0.9rem; border: 1px solid rgba(0, 131, 143, 0.2);">']
+    
+    # Header
+    table_html.append('<thead><tr style="background: rgba(0, 131, 143, 0.15);">')
+    for h in header:
+        table_html.append(f'<th style="padding: 12px; text-align: left; border-bottom: 2px solid rgba(0, 131, 143, 0.4); font-weight: 600;">{h}</th>')
+    table_html.append('</tr></thead>')
+    
+    # Body
+    table_html.append('<tbody>')
+    for i, row in enumerate(data_rows):
+        bg = 'rgba(0, 131, 143, 0.03)' if i % 2 == 0 else 'rgba(0, 131, 143, 0.08)'
+        table_html.append(f'<tr style="background: {bg};">')
+        for j, cell in enumerate(row):
+            align = 'left' if j == 0 else 'right'
+            # Clean any remaining markdown
+            clean_cell = re.sub(r'\*+', '', str(cell)).strip()
+            table_html.append(f'<td style="padding: 12px; text-align: {align}; border-bottom: 1px solid rgba(0, 131, 143, 0.15);">{clean_cell}</td>')
+        table_html.append('</tr>')
+    table_html.append('</tbody></table>')
+    
+    return '\n'.join(table_html)
 
 
 # =============================================================================
