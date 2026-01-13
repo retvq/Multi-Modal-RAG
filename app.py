@@ -230,8 +230,62 @@ st.markdown("""
 # =============================================================================
 
 @st.cache_resource
+def initialize_demo():
+    """Initialize the demo by ingesting the default document if needed."""
+    
+    # Check if vector DB already exists
+    if Path("./outputs/vectordb/chunks.json").exists() or (Path("./outputs/vectordb/chroma.sqlite3").exists()):
+        return True
+        
+    # Check if default PDF exists
+    default_pdf = Path("./data/qatar_test_doc.pdf")
+    if not default_pdf.exists():
+        # Try root as fallback
+        default_pdf = Path("qatar_test_doc.pdf")
+        if not default_pdf.exists():
+            return False
+            
+    try:
+        status = st.empty()
+        status.info("🚀 Initializing demo application (First run only)...")
+        
+        # 1. Ingestion
+        from src.ingestion.pipeline import IngestionPipeline
+        ingestion = IngestionPipeline(
+            document_path=str(default_pdf),
+            output_dir="./outputs/ingested"
+        )
+        ingestion.run()
+        blocks = ingestion.blocks
+        
+        # 2. Chunking
+        from src.embedding.chunker import Chunker
+        chunker = Chunker()
+        chunks = chunker.chunk_batch(blocks)
+        
+        # 3. Embedding
+        from src.embedding.pipeline import EmbeddingPipeline
+        embedding_pipeline = EmbeddingPipeline(
+            output_dir="./outputs/vectordb",
+            use_mock=False,
+            collection_name="chunks"
+        )
+        embedding_pipeline.embed_and_store(chunks)
+        
+        status.empty()
+        return True
+    except Exception as e:
+        st.error(f"Failed to initialize demo: {e}")
+        return False
+
+@st.cache_resource
 def load_rag_system(use_llm: bool = True, collection_name: str = "chunks", vector_store_path: str = "./outputs/vectordb"):
     """Load and cache the RAG system components."""
+    
+    # Ensure demo is initialized if using default collection
+    if collection_name == "chunks":
+        initialize_demo()
+        
     retrieval = RetrievalPipeline(
         vector_store_path=vector_store_path,
         use_mock=False,
